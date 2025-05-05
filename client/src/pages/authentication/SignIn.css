@@ -1,0 +1,11 @@
+
+
+.login{
+    /* background-image: url("../assets/images/logo/login.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Pangea","sans-serif";
+    font-weight: 600;
+    height: 100vh;
+ 
+}

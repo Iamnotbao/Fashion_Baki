@@ -1,0 +1,16 @@
+.comment_action{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.comment_action_title{
+    border-bottom: 2px solid black;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+    text-decoration: none;
+    color:black;
+}
+.comment_action_title:hover{
+    zoom: 10px;
+}

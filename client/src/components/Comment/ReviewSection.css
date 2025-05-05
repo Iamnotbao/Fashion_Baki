@@ -1,0 +1,275 @@
+/* Main container */
+.review-container {
+    max-width: 1200px;
+    padding: 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .review-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  @media (min-width: 768px) {
+    .review-layout {
+      flex-direction: row;
+    }
+  }
+  
+  /* Sidebar */
+  .review-sidebar {
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .review-sidebar {
+      width: 250px;
+      flex-shrink: 0;
+    }
+  }
+  
+  .rating-overview {
+    margin-bottom: 24px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .rating-display {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .rating-number {
+    font-size: 36px;
+    font-weight: 700;
+  }
+  
+  .rating-count {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+  }
+  
+  /* Filter section */
+  .filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .sort-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+  }
+  
+  .rating-filter {
+    margin-top: 8px;
+  }
+  
+  .filter-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .rating-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+  }
+  
+  .rating-button:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .rating-button-selected {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .rating-label {
+    font-size: 14px;
+  }
+  
+  .image-filter {
+    margin-top: 16px;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .filter-checkbox {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .checkbox-label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  /* Stars */
+  .stars-container {
+    display: flex;
+  }
+  
+  .star {
+    width: 20px;
+    height: 20px;
+    color: #ddd;
+  }
+  
+  .star-filled {
+    color: #ffb800;
+    fill: #ffb800;
+  }
+  
+  .star-half {
+    color: #ffb800;
+    fill: #ffb800;
+    opacity: 0.5;
+  }
+  
+  /* Reviews list */
+  .reviews-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .review-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .review-content {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .avatar-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .review-details {
+    flex: 1;
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .reviewer-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+    font-size: 16px;
+  }
+  
+  .review-date {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .review-text {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  
+  .review-image-container {
+    margin-top: 12px;
+  }
+  
+  .review-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  
+  .pagination-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .pagination-number {
+    font-weight: 500;
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  

@@ -1,0 +1,6 @@
+.banner_introduction{
+    width: 100%;
+}
+.banner_introduction > img {
+    max-width: 100%;
+}

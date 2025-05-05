@@ -1,0 +1,61 @@
+.banner-block__content {
+   
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        justify-content: flex-end;
+        left: 0;
+         max-width: 600px;
+        position: absolute;
+        top: -20%;    
+    
+}.banner-block__wrapper {
+    position: relative;
+}
+.banner-block__content h2 {
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+.banner-block__content p {
+    margin-bottom: 36px;
+    font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+    .md\:tw-text-base {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .md\:tw-py-4 {
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .md\:tw-px-12 {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .md\:tw-gap-2 {
+        gap: .5rem;
+    }
+}
+.tw-font-criteria {
+    font-family: CriteriaCF, sans-serif;
+}
+.tw-rounded-full {
+    border-radius: 9999px;
+}
+.banner-block__button > a{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}

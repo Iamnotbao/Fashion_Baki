@@ -1,0 +1,42 @@
+.account-page-order__heading {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-page__label {
+    color: rgba(0, 0, 0, .533);
+    font-size: 18px;
+}
+
+.no-orders[data-v-37be0bb0] {
+    display: flex;
+    justify-content: center;
+}
+
+
+.account-page-order__heading .btn-custom {
+    border-radius: 100vmax;
+    box-sizing: border-box;
+    font-family: CriteriaCF, Pangea, sans-serif;
+    font-size: 1rem;
+    height: auto;
+    line-height: 1.5;
+    min-height: 3.375rem;
+    padding: .5rem 2rem;
+    text-transform: uppercase;
+}
+.btn {
+    align-items: center;
+    background-color: #000;
+    border: 2px solid #000;
+    border-radius: 16px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex
+;
+    height: 40px;
+    justify-content: center;
+    padding: 0 30px;
+    transition: all .2s;
+}

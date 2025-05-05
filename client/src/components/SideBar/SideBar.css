@@ -1,0 +1,40 @@
+.sidebar{
+  position: sticky;
+  top:100px;
+  height: 100%;
+}
+.category__items{
+    list-style-type: none;
+    line-height: 40px;
+    padding-left: 0;
+    text-transform: uppercase;
+    display: block;
+    padding-left: 20px;
+  cursor: pointer; 
+
+    
+}
+.nav{
+    position: relative;
+}
+.nav:hover > ul {
+transition-delay: 2s;
+transition: ease-in;
+display: block;
+}
+
+.category__items:hover{
+  background-color: black;
+  }
+  .category__items:hover > a{
+  color: white;
+  }
+.category__items  > a{
+   
+    font-weight: 600px;
+    font-size: 18px;
+}
+.active{
+  background-color  : black;
+  color: white;
+}
