@@ -1,0 +1,18 @@
+{
+    "name": "fashion_baki",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "clean": "rimraf dist",
+      "build:client": "cd client && npm run build",
+      "deploy:client": "gh-pages -d dist/client",
+      "build:admin": "cd admin && npm run build",
+      "deploy:admin": "gh-pages -d dist/admin",
+      "build": "npm run clean && npm run build:client ",
+      "deploy": "npm run build && npm run deploy:client "
+    },
+    "devDependencies": {
+      "gh-pages": "^6.3.0",
+      "rimraf": "^5.0.5"
+    }
+  }
