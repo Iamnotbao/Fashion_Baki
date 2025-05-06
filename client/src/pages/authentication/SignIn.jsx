@@ -37,8 +37,8 @@ const SignIn = () => {
   console.log(accessToken);
   
 
-  const url = import.meta.env.VITE_API_URL;
-  console.log("auth", url);
+  const base = import.meta.env.VITE_API_URL;
+  console.log("auth", base);
   
 
 
