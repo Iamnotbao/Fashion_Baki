@@ -20,7 +20,7 @@ const HomeCategory = ({ eachBanner }) => {
     const [selectedProduct, setSelectedProduct] = useState({});
     console.log("auto select", selectedProduct);
     console.log(eachBanner);
-    const url = "/api";
+    const url = import.meta.env.VITE_API_URL;
     console.log("check env: ",url);
     
     useEffect(() => {
