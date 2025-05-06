@@ -10,12 +10,12 @@ export default defineConfig({
     port: 5000,
     proxy: {
       '/api': {
-        target: 'https://fashion-web-deoh.onrender.com', 
+        target: 'https://fashion-web-9s7i.onrender.com', 
         changeOrigin: true,
         secure: false,
       },
-      '/ws': {
-        target: 'http://localhost:8080', 
+      '^/ws/.': {
+        target: 'https://fashion-web-9s7i.onrender.com', 
         ws: true,
         changeOrigin: true,
         secure: false,

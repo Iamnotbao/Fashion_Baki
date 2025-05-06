@@ -53,10 +53,12 @@ const SignIn = () => {
     e.preventDefault();
     let response;
     try {
-      response = await axios.post(Base_URL, user, {
+      response = await axios.post(base, user, {
         headers: {
-          'Content-Type': 'application/json'
-        },credentials: "include",
+          'Content-Type': 'application/json',
+          'Accepts': "application/json",
+          'Access-Control-Allow-Origin': "*",
+        }
       })
 
       if (response.data) {
