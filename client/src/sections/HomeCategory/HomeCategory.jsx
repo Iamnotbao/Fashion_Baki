@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import AddToCart from "../../components/Cart/addToCart";
 import Sizes from "../../components/Product/Size";
 import BannerLock from "../../components/Banner/BannerLock";
+import ProductDetail from "../../pages/product/ProductDetail";
 
 
 
@@ -20,6 +21,8 @@ const HomeCategory = ({ eachBanner }) => {
     console.log("auto select", selectedProduct);
     console.log(eachBanner);
     const url = import.meta.env.VITE_API_URL;
+    console.log("check env: ",url);
+    
     useEffect(() => {
         const fetch = async () => {
             try {
@@ -57,7 +60,7 @@ const HomeCategory = ({ eachBanner }) => {
     }, [category]);
 
     const handleBuy = (id) => {
-        navigation("/Fashion_Baki/product/" + id);
+        navigation("/" + id);
     }
     // const handleID = (id) => {
     //     setID(id);
@@ -86,6 +89,7 @@ const HomeCategory = ({ eachBanner }) => {
 
     return (
         <section className="home-product">
+             <ProductDetail />
             {category.map((cat) => (
                 <>
                     <div className="home-product__banner" key={cat.id}>
