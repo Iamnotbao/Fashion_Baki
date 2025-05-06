@@ -19,6 +19,7 @@ import ProductAll from "./pages/product/ProductAll";
 import UserTracking from "./sections/Profile/UserTracking";
 import ForgotPassword from "./pages/authentication/ForgotPassword";
 import ResetPassword from "./pages/authentication/ResetPassword";
+import Test from "./sections/Test/Test";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuthentication();
@@ -40,7 +41,9 @@ const App = () => (
   <AuthProvider>
     <Router>
       <Routes>
+       
         <Route path={rootPaths.root} element={<Layout />} />
+        <Route path={`${rootPaths.root}/test`} element={<Test/>} />
         <Route path={rootPaths.authRoot}>
           <Route path="signIn" element={<SignIn />} />
           <Route path="signUp" element={<SignUp />} />

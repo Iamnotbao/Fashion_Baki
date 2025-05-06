@@ -32,7 +32,7 @@ const Main =()=>{
                 <HomeBanner/>
                 {/* <HomeProduct/> */}
                 <HomeCategory eachBanner={false}/>
-                {/* <HomeSubCategory/> */}
+                <HomeSubCategory/>
                 {/* <HomeBrand/> */}
                 <About/>
                 {/* <Testimonial/> */}

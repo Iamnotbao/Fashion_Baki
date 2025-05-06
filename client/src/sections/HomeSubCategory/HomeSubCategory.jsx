@@ -17,10 +17,13 @@ const HomeSubsubcategory = () => {
     const prevButtonRef = useRef(null);
     const nextButtonRef = useRef(null)
 
-
-
-    const baseURL = "/api/service/products/subcategory";
-    const url = "/api/service/subcategories"
+    
+    // const baseURL = "/api/service/products/subcategory";
+    // const url = "/api/service/subcategories"
+    
+    const envrionment = import.meta.env.VITE_ENVIRONMENT;
+   
+    
 
     useEffect(() => {
         const fetch = async () => {

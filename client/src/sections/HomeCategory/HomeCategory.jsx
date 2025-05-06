@@ -89,7 +89,6 @@ const HomeCategory = ({ eachBanner }) => {
 
     return (
         <section className="home-product">
-             <ProductDetail />
             {category.map((cat) => (
                 <>
                     <div className="home-product__banner" key={cat.id}>
