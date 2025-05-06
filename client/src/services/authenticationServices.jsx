@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = "/api/auth"
+const baseURL = "https://fashion-web-deoh.onrender.com/api"
 
 export const verifyUser = async (token) => {
     try {
@@ -20,7 +20,7 @@ export const verifyUser = async (token) => {
 
 export const forgotPassword = async (email) => {
     try {
-        const response = await axios.post(`${baseURL}/reset?email=${email}`)
+        const response = await axios.post(`${baseURL}/auth/reset?email=${email}`)
         return response.data;
     } catch (error) {
         console.log(error);
