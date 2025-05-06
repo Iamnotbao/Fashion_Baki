@@ -60,7 +60,7 @@ const HomeCategory = ({ eachBanner }) => {
     }, [category]);
 
     const handleBuy = (id) => {
-        navigation("/" + id);
+        navigation("/product/" + id);
     }
     // const handleID = (id) => {
     //     setID(id);

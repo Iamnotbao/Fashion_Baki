@@ -22,12 +22,12 @@ import Recommendation from "../../components/Recommendation/Recommendation"
 
 const ProductDetail = () => {
   const { id } = useParams()
-  const base = "/api/service/products/category"
+  // const base = "/api/service/products/category"
   const [count, setCount] = useState(1)
   const [sizePop, setSizePop] = useState(false)
   const swiperRef = useRef(null)
   const [products, setProducts] = useState([])
-  const baseURL = "/api/service/products"
+  const baseURL = import.meta.env.VITE_API_URL
   const url = "/api/service/categories"
   const [productInfo, setProductInfo] = useState([])
   const [category, setCategory] = useState([])
@@ -42,7 +42,7 @@ const ProductDetail = () => {
   const { updateCart } = UpdateCart()
   const fetchCart = useFetchCart()
   const { items } = useSelector((state) => state.cart)
-  console.log("color", color)
+  console.log("color", baseURL)
 
   const handleDescription = () => {
     setOnDescription(!onDesciption)
@@ -87,7 +87,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await axios.get(url)
+        const res = await axios.get(`${baseURL}/service/categories`)
         if (res.data) {
           setCategory(res.data)
         }
@@ -114,7 +114,7 @@ const ProductDetail = () => {
     const fetch = async () => {
       let response
       try {
-        response = await axios.get(`${base}/${id}`, {
+        response = await axios.get(`${baseURL}/service/products/category/${id}`, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -131,7 +131,7 @@ const ProductDetail = () => {
     const fetchData = async () => {
       let response
       try {
-        response = await axios.get(`${baseURL}/${id}`, {
+        response = await axios.get(`${baseURL}/service/products/${id}`, {
           headers: {
             "Content-Type": "application/json",
           },

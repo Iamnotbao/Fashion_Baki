@@ -35,7 +35,7 @@ const SignIn = () => {
   console.log("err", errorUser);
   console.log(accessToken);
   
-
+  const Base_URL ="/api/auth/login"
   const base = import.meta.env.VITE_API_URL;
   console.log("auth", base);
   
@@ -53,10 +53,10 @@ const SignIn = () => {
     e.preventDefault();
     let response;
     try {
-      response = await axios.post(`${base}/auth/login`, user, {
+      response = await axios.post(Base_URL, user, {
         headers: {
           'Content-Type': 'application/json'
-        }, withCredentials: true
+        },credentials: "include",
       })
 
       if (response.data) {
