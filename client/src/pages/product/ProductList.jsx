@@ -29,7 +29,7 @@ const ProductList = () => {
 console.log(totalPage);
 
   const handleBuy = (id) => {
-    navigation("/Fashion_Baki/product/" + id);
+    navigation("/product/" + id);
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ console.log(totalPage);
 
   const handleCategoryClick = (subcategory) => {
     setSelectedSubCat(subcategory);
-    navigation(`/Fashion_Baki/product/all/${categoryName}?collection=${encodeURIComponent(subcategory.name)}`,
+    navigation(`/product/all/${categoryName}?collection=${encodeURIComponent(subcategory.name)}`,
       { state: { subId: subcategory.id, id: id } }
     );
     fetchSubPro(subcategory.id);

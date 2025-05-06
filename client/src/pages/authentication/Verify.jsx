@@ -23,7 +23,7 @@ const Verify = () => {
             try {
                 const response = await verifyUser(key.value);
                 if (response) {
-                    navigation("/Fashion_Baki/authentication/signIn");
+                    navigation("/authentication/signIn");
                 }
 
             } catch (error) {
@@ -35,7 +35,7 @@ const Verify = () => {
             try {
                 const response = await verifyPassword(key.value);
                 if (response) {
-                    navigation("/Fashion_Baki/authentication/reset_password");
+                    navigation("/authentication/reset_password");
                 }
             } catch (error) {
                 console.log(error);

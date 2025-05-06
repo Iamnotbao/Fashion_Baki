@@ -39,7 +39,7 @@ const CartTable = ({ carts, changeQuantity, handleRemove, isDetail }) => {
   console.log(carts)
   const navigation = useNavigate()
   const handleDetail = (id) => {
-    navigation("/Fashion_Baki/product/" + id)
+    navigation("/product/" + id)
   }
   return (
     <TableContainer component={Paper}>

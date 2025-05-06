@@ -6,14 +6,14 @@ const SideBarProfile = () => {
         <div class="account-page__sidebar">
         <div class="account-sidebar">
             <div class="account-sidebar-items">
-                <a href="/Fashion_Baki/user/info" class="account-sidebar-item active">
+                <a href="/user/info" class="account-sidebar-item active">
                     <span class="circle">
                         <img src="https://mcdn.coolmate.me/image/September2023/mceclip6_34.png" alt="Thông tin tài khoản" />
                     </span>
                     User Infomation
                     <span><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
-                <a href="/Fashion_Baki/user/cart" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip4_7.png" alt="Nhật ký hoạt động" /></span>
+                <a href="/user/cart" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip4_7.png" alt="Nhật ký hoạt động" /></span>
                     Order History
                     <span><i class="fa-solid fa-arrow-right"></i></span>
                 </a> <a href="/account/coolcash-point" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip5_85.png" alt="Nhật ký hoạt động" /></span>
@@ -22,7 +22,7 @@ const SideBarProfile = () => {
                 </a> <a href="/account/voucher-wallet" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip1_59.png" alt="Ví Voucher" /></span>
                     Voucher Wallets
                     <span><i class="fa-solid fa-arrow-right"></i></span>
-                </a> <a href="/Fashion_Baki/user/tracking-order" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip2_76.png" alt="Sổ địa chỉ" /></span>
+                </a> <a href="/user/tracking-order" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip2_76.png" alt="Sổ địa chỉ" /></span>
                     Tracking Order
                     <span><i class="fa-solid fa-arrow-right"></i></span>
                 </a> <a href="#" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip3_71.png" alt="Rating &amp; Feedback" /></span>

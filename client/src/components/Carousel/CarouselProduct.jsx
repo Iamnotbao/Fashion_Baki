@@ -13,7 +13,7 @@ const CarouselProduct = ({ products = [] }) => {
   
   const handleBuy = useCallback((id) => {
     console.log('click', id);
-    navigation('/Fashion_Baki/product/' + id);
+    navigation('/product/' + id);
   }, [navigation]);
   
   return (

@@ -62,7 +62,7 @@ const HomeSubsubcategory = () => {
 
 
     const handleBuy = (id) => {
-        navigation("/Fashion_Baki/product/" + id);
+        navigation("/product/" + id);
     }
  
    

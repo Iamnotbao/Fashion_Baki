@@ -7,7 +7,7 @@ const ClearCart = () => {
     const navigation = useNavigate();
     const clearCart =() => {
         dispatch(clearCartItemThunk());
-        navigation("/Fashion_Baki/");
+        navigation("/");
     };
     return {clearCart};
 };

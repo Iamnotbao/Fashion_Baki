@@ -38,7 +38,7 @@ const CartDetail = () => {
         setLoading(false);
     }
     const handleConfirm=()=>{
-        navigation("/Fashion_Baki/product/order")
+        navigation("/product/order")
     }
     const handleClearCart =()=>{
         clearCart();

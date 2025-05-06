@@ -1,9 +1,9 @@
 export const rootPaths = {
-  root: '/Fashion_Baki/',
+  root: '/',
   pagesRoot: 'pages',
-  authRoot: '/Fashion_Baki/authentication',
-  productRoot: '/Fashion_Baki/product',
-  profileRoot: '/Fashion_Baki/user',
+  authRoot: '/authentication',
+  productRoot: '/product',
+  profileRoot: '/user',
 };
 
 export default {

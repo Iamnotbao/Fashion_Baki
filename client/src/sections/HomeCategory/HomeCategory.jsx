@@ -5,7 +5,6 @@ import 'swiper/css';
 import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import AddToCart from "../../components/Cart/addToCart";
-import Sock from "../../assets/images/sock.png"
 import Sizes from "../../components/Product/Size";
 import BannerLock from "../../components/Banner/BannerLock";
 
@@ -20,14 +19,11 @@ const HomeCategory = ({ eachBanner }) => {
     const [selectedProduct, setSelectedProduct] = useState({});
     console.log("auto select", selectedProduct);
     console.log(eachBanner);
-
-    const baseURL = "/api/service/products/category";
-    const url = "/api/service/categories"
-
+    const url = import.meta.env.VITE_API_URL;
     useEffect(() => {
         const fetch = async () => {
             try {
-                const res = await axios.get(url)
+                const res = await axios.get(`${url}/service/categories`)
                 if (res.data) {
                     setCategory(res.data);
                 }
@@ -44,7 +40,7 @@ const HomeCategory = ({ eachBanner }) => {
             try {
                 const catProducts = {};
                 for (const cat of category) {
-                    const res = await axios.get(`${baseURL}/${cat.id}?size=8`, {
+                    const res = await axios.get(`${url}/service/products/category/${cat.id}?size=8`, {
                         headers: {
                             "Content-Type": "application/json",
                         },

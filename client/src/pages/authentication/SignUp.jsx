@@ -43,7 +43,7 @@ const SignUp = () => {
       
       if (response.data) {
         localStorage.setItem("email",user.email);
-        navigation("/Fashion_Baki/authentication/verify/",{state:{functionName:"account"}});
+        navigation("/authentication/verify/",{state:{functionName:"account"}});
       }
     } catch (error) {
       console.log(error);

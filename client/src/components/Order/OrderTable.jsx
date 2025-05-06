@@ -96,7 +96,7 @@ const OrderHistoryPage = ({orders}) => {
   });
   
   const handleBuy = (id) => {
-    navigation("/Fashion_Baki/product/" + id);
+    navigation("/product/" + id);
   };
   
 

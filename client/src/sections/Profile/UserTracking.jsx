@@ -30,7 +30,7 @@ const UserTracking = () => {
                     <div class="account-page-order__heading"><h3>Order Tracking</h3></div>
                                 {orders ? (<Tracking orders={orders} />) : (<><div data-v-37be0bb0="" class="account-page__label">
                                     Đơn hàng của bạn</div><div data-v-37be0bb0="" class="orders-body mgt--10"><div data-v-37be0bb0="" class="no-orders"><div data-v-37be0bb0="">
-                                        Bạn chưa có đơn hàng nào mua tại website <a data-v-37be0bb0="" href="/Fashion_Baki/" class="tw-font-bold">Baki</a></div></div> </div></>)}
+                                        Bạn chưa có đơn hàng nào mua tại website <a data-v-37be0bb0="" href="/" class="tw-font-bold">Baki</a></div></div> </div></>)}
                                 <div data-v-37be0bb0="" id="loadingIndicator" class="loading-indicator"><div data-v-37be0bb0="" class="loader"></div></div>
                 </div>
             </div>

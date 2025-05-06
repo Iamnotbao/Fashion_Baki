@@ -40,7 +40,7 @@ function ResetPassword() {
                 console.log(response);
                 setIsSubmitting(true)
                 setError("")
-                navigation("/Fashion_Baki/authentication/signIn");
+                navigation("/authentication/signIn");
             }
         } catch (error) {
             console.log(error);
@@ -151,10 +151,10 @@ function ResetPassword() {
                     <Divider sx={{ width: "100%", my: 2 }} />
 
                     <Stack direction="row" spacing={2} justifyContent="center">
-                        <Link href="/Fashion_Baki/authentication/signIn" underline="hover" sx={{ color: "text.secondary" }}>
+                        <Link href="/authentication/signIn" underline="hover" sx={{ color: "text.secondary" }}>
                             Log In
                         </Link>
-                        <Link href="/Fashion_Baki/authentication/signUp" underline="hover" sx={{ color: "text.secondary" }}>
+                        <Link href="/authentication/signUp" underline="hover" sx={{ color: "text.secondary" }}>
                             Register
                         </Link>
                     </Stack>

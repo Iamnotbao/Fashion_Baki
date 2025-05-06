@@ -72,7 +72,7 @@ const HomeBanner = () => {
                 {listBanner.map((banner, index) => (
                     <SwiperSlide key={index}>
                         <div className="home-banner__slider">
-                            {/* <Link to={"/Fashion_Baki/product/all"} className="buyAction">
+                            {/* <Link to={"/product/all"} className="buyAction">
                                 Shop Now
                                 <span>
                                     <i className="fa-solid fa-arrow-right"></i>

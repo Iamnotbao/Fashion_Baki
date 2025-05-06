@@ -53,7 +53,7 @@ const HomeBrand = () => {
     }, [brands]);
 
     const handleBuy = (productId) => {
-        navigation("/Fashion_Baki/product/" + productId);
+        navigation("/product/" + productId);
     };
 
     return (

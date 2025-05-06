@@ -21,7 +21,7 @@ export default function Logout({ open, handleClickOpen }) {
             const response = await axios.post(logOutURL);
             if (response.data) {
                 logout();
-                navigation("/Fashion_Baki/authentication/signIn");
+                navigation("/authentication/signIn");
             }
         } catch (error) {
             console.log(error);

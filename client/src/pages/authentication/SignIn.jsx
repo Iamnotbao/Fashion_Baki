@@ -60,7 +60,7 @@ const SignIn = () => {
       if (response.data) {
         localStorage.setItem("username", response.data.username);
         login(response.data.username);
-        navigation("/Fashion_Baki/")
+        navigation("/")
       }
     } catch (error) {
       console.log(error);
@@ -79,7 +79,7 @@ const SignIn = () => {
         try {
           const response = await googleAuthentication(accessToken);
           login(response.username);
-          navigation("/Fashion_Baki/")
+          navigation("/")
         } catch (error) {
             console.log(error);          
         }
@@ -171,7 +171,7 @@ const SignIn = () => {
                   label="Keep me logged in"
                   sx={{ ml: -0.75 }}
                 />
-                <Link to={"/Fashion_Baki/authentication/forgot_password"} fontSize="body2.fontSize" fontWeight={600}>
+                <Link to={"/authentication/forgot_password"} fontSize="body2.fontSize" fontWeight={600}>
                   Forgot password?
                 </Link>
               </Stack>

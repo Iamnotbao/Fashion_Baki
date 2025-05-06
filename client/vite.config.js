@@ -6,10 +6,6 @@ export default defineConfig({
   define: {
     global: 'globalThis', 
   },
-  build: {
-    outDir: '../dist/client'  
-  },
-  base: '/Fashion_Baki/',
   server: {
     port: 5000,
     proxy: {
