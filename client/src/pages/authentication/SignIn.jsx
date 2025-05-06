@@ -25,7 +25,6 @@ import { googleAuthentication } from '../../services/authenticationServices';
 const SignIn = () => {
   const [user, setUser] = useState({ usernameOrEmail: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
-  const baseURL = "https://fashion-web-deoh.onrender.com/api/auth/login"
   const [errorUser, setErrorUser] = useState(true);
   const [errPop, setErrPop] = useState(false);
   const navigation = useNavigate();
@@ -52,10 +51,9 @@ const SignIn = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
     let response;
     try {
-      response = await axios.post(baseURL, user, {
+      response = await axios.post(`${base}/auth/login`, user, {
         headers: {
           'Content-Type': 'application/json'
         }, withCredentials: true
