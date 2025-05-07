@@ -1,17 +1,8 @@
 import axios from  'axios';
 import { header } from 'framer-motion/client';
-
-
 const API_BASE_URL = import.meta.env.VITE_API_URL;
-
-
 export const fetchCart =async()=>{
-    const response = await axios.get(`${API_BASE_URL}/service/carts`,{
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        withCredentials:true
-    });
+    const response = await axios.get(`${API_BASE_URL}/service/carts`,{});
     console.log("check response fetch cart",response);
     
     return response.data;

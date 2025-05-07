@@ -19,6 +19,7 @@ import BackGround from "../../assets/images/logo/login.png"
 import GoogleAuthentication from './GoogleAuthentication';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { googleAuthentication } from '../../services/authenticationServices';
+import Cookies from 'js-cookie';
 
 
 
@@ -40,6 +41,19 @@ const SignIn = () => {
   console.log("auth", base);
   
 
+    const check =async()=>{
+        const c = await axios.get(`${base}/auth/check-session`,{
+            headers: {
+              "Content-Type": "application/json"
+            },
+            withCredentials: true
+        })
+        console.log("check session",c); 
+        
+    }
+ 
+
+
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -53,17 +67,19 @@ const SignIn = () => {
     e.preventDefault();
     let response;
     try {
-      response = await axios.post(`${base}/auth/login`, user, {
+      response = await axios.post(Base_URL, user, {
         headers: {
           'Content-Type': 'application/json',
           'Accepts': 'application/json',
         },withCredentials: true
       })
-
+      console.log("check response", response);
       if (response.data) {
         localStorage.setItem("username", response.data.username);
         login(response.data.username);
-        navigation("/")
+        Cookies.set('g_state', JSON.stringify({ i_l: 0 }), { path: '/', sameSite: 'lax' });
+        check();
+        // navigation("/")
       }
     } catch (error) {
       console.log(error);

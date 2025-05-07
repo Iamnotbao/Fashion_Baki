@@ -21,8 +21,7 @@ const HomeCategory = ({ eachBanner }) => {
     console.log("auto select", selectedProduct);
     console.log(eachBanner);
     const url = import.meta.env.VITE_API_URL;
-    const user = JSON.parse(localStorage.getItem("user"));
-    console.log("fetch user", user);    
+ 
     
     useEffect(() => {
         const fetch = async () => {

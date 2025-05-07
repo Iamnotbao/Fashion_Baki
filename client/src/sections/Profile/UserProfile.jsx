@@ -18,7 +18,8 @@ const UserProfile = () => {
             try {
                 const response = await axios.get(`${baseURL}/users/profile`, {
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        
                     },
                     withCredentials: true
                 });

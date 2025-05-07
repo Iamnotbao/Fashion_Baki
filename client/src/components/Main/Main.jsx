@@ -13,16 +13,17 @@ import About from "../../sections/About/About";
 import Instagram from "../../sections/Instagram/Instagram";
 
 const Main =()=>{
+    const base = import.meta.env.VITE_API_URL;
     useEffect(()=>{
         const check =async()=>{
-            const c = await axios.get("/api/auth/check-session",{
+            const c = await axios.get(`${base}/auth/check-session`,{
                 headers: {
                   "Content-Type": "application/json"
                 },
                 withCredentials: true
               
             })
-            console.log(c);
+            console.log("check session",c); 
             
         }
         check();
