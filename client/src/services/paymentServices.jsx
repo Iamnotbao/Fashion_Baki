@@ -1,12 +1,12 @@
 import axios from "axios";
-const baseURL = "/api/payments/momo";
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const payOrder =async(orderId )=>{
-    const response = await axios.post(`${baseURL}/${orderId}`)
+    const response = await axios.post(`${baseURL}/payments/momo/${orderId}`)
     return response.data;
 }
 
 export const checkStatus = async(orderId)=>{
-    const response = await axios.post(`${baseURL}/check/${orderId}`)
+    const response = await axios.post(`${baseURL}/payments/momo/check/${orderId}`)
     return response.data;
 }

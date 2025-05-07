@@ -1,9 +1,9 @@
 import axios from "axios";
-const baseURL = "https://fashion-web-deoh.onrender.com/api"
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const verifyUser = async (token) => {
     try {
-        const response = await axios.get(`${baseURL}/verify?token=${token}`, {
+        const response = await axios.get(`${baseURL}/auth/verify?token=${token}`, {
             headers: {
                 "Content-Type": "application/json"
             }
@@ -56,7 +56,7 @@ export const resetPassword = async (email, password) => {
 }
 export const googleAuthentication= async(idToken)=>{
     try {
-        const response = await axios.post(`${baseURL}/google`,{},{
+        const response = await axios.post(`${baseURL}/auth/google`,{},{
             headers: {
                 Authorization: `Bearer ${idToken}`,
               },

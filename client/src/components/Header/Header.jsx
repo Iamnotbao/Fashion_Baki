@@ -25,7 +25,7 @@ const Header = () => {
     const fetchCart = useFetchCart();
     const [loading,setLoading] = useState(false);
     const {removeCart} = RemoveCart();
-    const baseURL = "/api/service";
+    const baseURL = import.meta.env.VITE_API_URL;
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const orderId = queryParams.get("orderId");
@@ -97,7 +97,7 @@ const Header = () => {
     useEffect(() => {
         const fetchData = async (type) => {
             try {
-                const response = await axios.get(`${baseURL}/${type}`, {
+                const response = await axios.get(`${baseURL}/service/${type}`, {
                     headers: {
                         "Content-Type": "application/json"
                     }

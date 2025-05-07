@@ -11,12 +11,12 @@ const UserProfile = () => {
     const [userProfile, setUserProfile] = useState(null);
     const [newProfile, setNewProfile] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-    const baseURL = "/api/users/profile";
+    const baseURL = import.meta.env.VITE_API_URL ;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(baseURL, {
+                const response = await axios.get(`${baseURL}/users/profile`, {
                     headers: {
                         "Content-Type": "application/json"
                     },
@@ -49,7 +49,7 @@ const UserProfile = () => {
             const formData = new FormData();
             formData.append("file", newFile);
             try {
-                const response = await axios.put("/api/users/upload", formData,
+                const response = await axios.put(`${baseURL}/users/upload`, formData,
                     {
                         headers: {
                             "Content-Type": "multipart/form-data",
@@ -84,7 +84,7 @@ const UserProfile = () => {
     }
     const handleUpdate = async () => {
         try {
-            const response = await axios.put(baseURL, newProfile, {
+            const response = await axios.put(`${baseURL}/users/profile`, newProfile, {
                 headers: {
                     "Content-Type": "application/json"
                 },

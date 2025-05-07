@@ -14,11 +14,10 @@ export default function Logout({ open, handleClickOpen }) {
 
     const { logout } = useAuthentication();
     const navigation = useNavigate();
-    const baseURL = "/api/service";
-    const logOutURL = "/api/auth/logout"
+    const logOutURL = import.meta.env.VITE_API_URL;
     const handleLogout = async () => {
         try {
-            const response = await axios.post(logOutURL);
+            const response = await axios.post(`${logOutURL}/auth/logout`);
             if (response.data) {
                 logout();
                 navigation("/authentication/signIn");
