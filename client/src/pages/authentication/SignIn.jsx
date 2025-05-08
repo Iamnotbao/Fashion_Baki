@@ -34,9 +34,8 @@ const SignIn = () => {
   const clientId = "52237736446-l0nv46sq881vrsjfs7d9as2e43586h9h.apps.googleusercontent.com";
   const [accessToken,setAccessToken] = useState({});
   console.log("err", errorUser);
-  console.log("ggggg");
+  console.log(accessToken);
   
-  const Base_URL ="/api/auth/login"
   const base = import.meta.env.VITE_API_URL;
   console.log("auth", base);
   
@@ -44,7 +43,8 @@ const SignIn = () => {
     const check =async()=>{
         const c = await axios.get(`${base}/auth/check-session`,{
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              'Accepts': 'application/json',
             },
             withCredentials: true
         })
@@ -77,6 +77,7 @@ const SignIn = () => {
       if (response.data) {
         localStorage.setItem("username", response.data.username);
         login(response.data.username);
+        Cookies.set('g_state', JSON.stringify({ i_l: 0 }), { path: '/', sameSite: 'lax' });
         check();
         // navigation("/")
       }
