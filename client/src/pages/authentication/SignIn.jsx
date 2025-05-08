@@ -34,7 +34,7 @@ const SignIn = () => {
   const clientId = "52237736446-l0nv46sq881vrsjfs7d9as2e43586h9h.apps.googleusercontent.com";
   const [accessToken,setAccessToken] = useState({});
   console.log("err", errorUser);
-  console.log(accessToken);
+  console.log("ggggg");
   
   const Base_URL ="/api/auth/login"
   const base = import.meta.env.VITE_API_URL;
