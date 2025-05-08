@@ -39,18 +39,21 @@ const SignIn = () => {
   const base = import.meta.env.VITE_API_URL;
   console.log("auth", base);
   
-
-    const check =async()=>{
-        const c = await axios.get(`${base}/auth/check-session`,{
+  const check = async () => {
+    try {
+        await new Promise(resolve => setTimeout(resolve, 500)); // Delay 500ms
+        const c = await axios.get(`${base}/auth/check-session`, {
             headers: {
-              "Content-Type": "application/json",
-              'Accepts': 'application/json',
-            }
-            ,withCredentials: true
-        })
-        console.log("check session",c); 
-        
+                "Content-Type": "application/json",
+                'Accepts': 'application/json',
+            },
+            withCredentials: true
+        });
+        console.log("Check session response:", c.data);
+    } catch (error) {
+        console.error("Check session error:", error.response ? error.response.data : error.message);
     }
+};
  
  
   const handleInputChange = (e) => {
