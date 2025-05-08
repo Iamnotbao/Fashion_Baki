@@ -67,7 +67,7 @@ const SignIn = () => {
     e.preventDefault();
     let response;
     try {
-      response = await axios.post(Base_URL, user, {
+      response = await axios.post(`${base}/auth/login`, user, {
         headers: {
           'Content-Type': 'application/json',
           'Accepts': 'application/json',
@@ -77,7 +77,6 @@ const SignIn = () => {
       if (response.data) {
         localStorage.setItem("username", response.data.username);
         login(response.data.username);
-        Cookies.set('g_state', JSON.stringify({ i_l: 0 }), { path: '/', sameSite: 'lax' });
         check();
         // navigation("/")
       }
