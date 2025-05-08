@@ -45,16 +45,14 @@ const SignIn = () => {
             headers: {
               "Content-Type": "application/json",
               'Accepts': 'application/json',
-            },
-            withCredentials: true
+            }
+            ,withCredentials: true
         })
         console.log("check session",c); 
         
     }
  
  
-
-
   const handleInputChange = (e) => {
     e.preventDefault();
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -77,7 +75,6 @@ const SignIn = () => {
       if (response.data) {
         localStorage.setItem("username", response.data.username);
         login(response.data.username);
-        Cookies.set('g_state', JSON.stringify({ i_l: 0 }), { path: '/', sameSite: 'lax' });
         check();
         // navigation("/")
       }
