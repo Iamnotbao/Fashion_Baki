@@ -136,22 +136,22 @@ const Header = () => {
         <header>
             <div className="header__inner">
                 <div className="header__logo">
-                    <a href="/"><img src={Logo} width={70} height={70} style={{ borderRadius: "50%" }} alt="Logo" loading="lazy" /></a>
+                    <Link to="/"><img src={Logo} width={70} height={70} style={{ borderRadius: "50%" }} alt="Logo" loading="lazy" /></Link>
                 </div>
                 <div className="header_nav">
                     <ul>
                         <li>
-                            <a href="/product/all">Clothes</a>
+                            <Link to="/product/all">Clothes</Link>
                             <ul className="sub-menu">
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-3">
                                             <p>Theo Sản Phẩm</p>
                                             <ul>
-                                                <li><a href="/product/all">Tất cả</a></li>
-                                                <li><a href="">Sản Phẩm Mới</a></li>
-                                                <li><a href="">Sản Phẩm Bán Chạy</a></li>
-                                                <li><a href="">Set Combo</a></li>
+                                                <li><Link to="/product/all">Tất cả</Link></li>
+                                                <li><Link to="">Sản Phẩm Mới</Link></li>
+                                                <li><Link to="">Sản Phẩm Bán Chạy</Link></li>
+                                                <li><Link to="">Set Combo</Link></li>
                                             </ul>
                                         </div>
 
@@ -160,10 +160,10 @@ const Header = () => {
                                             <div className="col-md-3" key={c.id}>
                                                 <p>{c.name}</p>
                                                 <ul>
-                                                <li onClick={()=>handleToList(c)}><a>All {c.name}</a></li>
+                                                <li onClick={()=>handleToList(c)}><Link>All {c.name}</Link></li>
                                                     {subCategory.filter((sub) => sub.categoryId === c.id)
                                                         .map((sub) => (
-                                                            <li onClick={()=>handleToSub(sub,c)}><a href="">{sub.name}</a></li>
+                                                            <li onClick={()=>handleToSub(sub,c)}><Link to="">{sub.name}</Link></li>
                                                         ))
                                                     }
                                                 </ul>
@@ -174,15 +174,15 @@ const Header = () => {
                                 </div>
                             </ul>
                         </li>
-                        <li><a href="">Daily Sport</a></li>
-                        <li><a href="">Casual</a></li>
-                        <li><a href="">Local Brand</a>
+                        <li><Link to="">Daily Sport</Link></li>
+                        <li><Link to="">Casual</Link></li>
+                        <li><Link to="">Local Brand</Link>
                             <ul className="sub-menu" style={{ width: "180px" }}>
                                 <div className="container">
                                     <div className="row" >
                                         <div className="col-md-12">
                                             <ul>{brand && brand.map((b) => (
-                                                <li><a href="/product/all">{b.name}</a></li>
+                                                <li><Link to="/product/all">{b.name}</Link></li>
                                             ))}
 
                                             </ul>
@@ -190,16 +190,16 @@ const Header = () => {
                                     </div>
                                 </div></ul>
                         </li>
-                        <li><a href="">Contact</a>
+                        <li><Link to="">Contact</Link>
                             <ul className="sub-menu" style={{ width: "180px" }}>
                                 <div className="container">
                                     <div className="row" >
                                         <div className="col-md-12">
                                             <ul>
-                                                <li><a href="/product/all">About US</a></li>
-                                                <li><a href="">FAQ</a></li>
-                                                <li><a href="">Event</a></li>
-                                                <li><a href="">Promotion</a></li>
+                                                <li><Link to="/product/all">About US</Link></li>
+                                                <li><Link to="">FAQ</Link></li>
+                                                <li><Link to="">Event</Link></li>
+                                                <li><Link to="">Promotion</Link></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -211,14 +211,14 @@ const Header = () => {
                     <div className="header-actions-search__box">
                         <label htmlFor="" className="header-actions-search__field">
                             <input type="text" className="header-actions-search__input" placeholder="Find product ..." />
-                            <a href="" className="header-actions-search__button">
+                            <Link to="" className="header-actions-search__button">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                            </a>
+                            </Link>
                         </label>
                     </div>
                     <div className="header-actions__button">
-                        <a onClick={handleUser} className="user">
-                            <i class="fa-solid fa-user"></i></a>
+                        <Link onClick={handleUser} className="user">
+                            <i class="fa-solid fa-user"></i></Link>
                         <ul style={{ width: "100px" }}>
                             <li  className="profile" onClick={() => navigation("/user/info")}><Link>{(username !== null) ? (username) : ("no-data")}</Link></li>
                             {(username !== null) ? (<li className="logout" style={{marginBottom:"0"}}  onClick={handleClickOpen}><Link>Log out</Link></li>) : (<li className="logout" style={{marginBottom:"0"}}><Link to={"/authentication/signIn"}>Log In</Link></li>)}
@@ -233,8 +233,8 @@ const Header = () => {
                                 <div className="header-actions-cart-popup__inner">
                                     <div className="header-actions-cart-popup__wrapper">
                                         <div className="header-actions-cart-popup__header">
-                                            <span href="">{length > 0 ? length : 0} products</span>
-                                            <a href="/product/cart_detail">Watch All</a>
+                                            <span to="">{length > 0 ? length : 0} products</span>
+                                            <Link to="/product/cart_detail">Watch All</Link>
                                         </div>
                                         {length > 0 ? (
                                             items.cartDetails?( items.cartDetails.map((item) => (
@@ -247,7 +247,7 @@ const Header = () => {
                                                             X
                                                         </div>
                                                         <div className="mini-cart__item-title">
-                                                            <a style={{color:"black"}} onClick={()=>handleBuy(item.product.id)}>{item.product.name}</a>
+                                                            <Link style={{color:"black"}} onClick={()=>handleBuy(item.product.id)}>{item.product.name}</Link>
                                                         </div>
                                                         <div className="mini-cart__item-appearances">   
                                                             <span>{item.color}</span><span> / </span><span>{item.size}</span>
@@ -284,8 +284,8 @@ const Header = () => {
                                 <div className="header-actions-cart-popup__inner">
                                     <div className="header-actions-cart-popup__wrapper">
                                         <div className="header-actions-cart-popup__header">
-                                            <span href="">{length > 0 ? length : 0} products</span>
-                                            <a href="/product/cart_detail">Watch All</a>
+                                            <span to="">{length > 0 ? length : 0} products</span>
+                                            <Link to="/product/cart_detail">Watch All</Link>
                                         </div>
                                         {length > 0 ? (
                                             items.cartDetails?( items.cartDetails.map((item) => (
@@ -298,7 +298,7 @@ const Header = () => {
                                                             X
                                                         </div>
                                                         <div className="mini-cart__item-title">
-                                                            <a style={{color:"black"}} onClick={()=>handleBuy(item.product.id)}>{item.product.name}</a>
+                                                            <Link style={{color:"black"}} onClick={()=>handleBuy(item.product.id)}>{item.product.name}</Link>
                                                         </div>
                                                         <div className="mini-cart__item-appearances">   
                                                             <span>{item.color}</span><span> / </span><span>{item.size}</span>
