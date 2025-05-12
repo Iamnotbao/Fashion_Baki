@@ -79,7 +79,7 @@ const SignIn = () => {
         localStorage.setItem("username", response.data.username);
         login(response.data.username);
         check();
-        // navigation("/")
+        navigation("/")
       }
     } catch (error) {
       console.log(error);
