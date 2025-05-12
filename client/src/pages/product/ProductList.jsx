@@ -15,10 +15,7 @@ const ProductList = () => {
   const [selectedSubCat, setSelectedSubCat] = useState(null);
   const [brandID, setBrandID] = useState({});
   const navigation = useNavigate();
-  const url = "/api/service/products/category";
-  const urlBrand = "/api/service/products/brand";
-  const urlAllBrand = "/api/service/brands";
-  const urlSubCat = "/api/service/subcategories/category";
+  const url = import.meta.env.VITE_API_URL;
   const [search, setSearch] = useState("");
   const location = useLocation();
   const { id } = location.state?.id ? location.state : 1;
@@ -79,7 +76,7 @@ console.log(totalPage);
 
   const fetchBrand = async (id) => {
     try {
-      const response = await axios.get(`${urlBrand}/${id}`, {
+      const response = await axios.get(`${url}/service/products/brand/${id}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -97,7 +94,7 @@ console.log(totalPage);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${url}/${id}?size=8`, {
+      const response = await axios.get(`${url}/service/products/category/${id}?size=8`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -115,7 +112,7 @@ console.log(totalPage);
 
   const fetchCategory = async () => {
     try {
-      const res = await axios.get(`${urlSubCat}/${id}`, {
+      const res = await axios.get(`${url}/service/subcategories/category/${id}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -132,7 +129,7 @@ console.log(totalPage);
   useEffect(() => {
     const fetchAllBrand = async () => {
       try {
-        const catResponse = await axios.get(`${urlAllBrand}`);
+        const catResponse = await axios.get(`${url}/service/brands`);
         setBrand(catResponse.data);
       } catch (error) {
         console.log(error);
