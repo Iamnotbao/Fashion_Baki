@@ -1,5 +1,7 @@
+import { useState } from "react";
 import "./UserProfile.css"
 import { Link } from "react-router-dom";
+import Logout from "../../components/Logout/Logout";
 
 const SideBarProfile = () => {
     const [open, setOpen] = useState(false);

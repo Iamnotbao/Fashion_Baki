@@ -31,17 +31,11 @@ const Main =()=>{
     return(
             <section className="main">
                 <HomeBanner/>
-                {/* <HomeProduct/> */}
                 <HomeCategory eachBanner={false}/>
-                <HomeSubCategory/>
-                {/* <HomeBrand/> */}
                 <About/>
-                {/* <Testimonial/> */}
                 <Feature/>
                 <Benefits/>
-                {/* <Promotion/> */}
                 <Instagram/>
-               
             </section>
     )
 }
