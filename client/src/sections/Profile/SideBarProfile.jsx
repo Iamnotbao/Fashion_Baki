@@ -6,13 +6,13 @@ const SideBarProfile = () => {
         <div class="account-page__sidebar">
         <div class="account-sidebar">
             <div class="account-sidebar-items">
-                <a href="/user/info" class="account-sidebar-item active">
+                <Link to="/user/info" class="account-sidebar-item active">
                     <span class="circle">
                         <img src="https://mcdn.coolmate.me/image/September2023/mceclip6_34.png" alt="Thông tin tài khoản" />
                     </span>
                     User Infomation
                     <span><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
+                </Link>
                 <a href="/user/cart" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip4_7.png" alt="Nhật ký hoạt động" /></span>
                     Order History
                     <span><i class="fa-solid fa-arrow-right"></i></span>
