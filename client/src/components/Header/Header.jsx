@@ -83,8 +83,11 @@ const Header = () => {
         }
     }, [items]);
     
+    const handleUser = () => {  
+        navigation("/user/info");
 
-  
+    }
+    
     const handleOrder =()=>{
         navigation("/product/cart_detail");
     }
@@ -214,7 +217,7 @@ const Header = () => {
                         </label>
                     </div>
                     <div className="header-actions__button">
-                        <Link to={"/user/info"} className="user">
+                        <Link onClick={handleUser} className="user">
                             <i class="fa-solid fa-user"></i></Link>
                         <ul style={{ width: "100px" }}>
                             <li  className="profile" onClick={() => navigation("/user/info")}><Link>{(username !== null) ? (username) : ("no-data")}</Link></li>
