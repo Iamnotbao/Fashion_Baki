@@ -1,4 +1,5 @@
 import "./UserProfile.css"
+import { Link } from "react-router-dom";
 
 const SideBarProfile = () => {
     return (
