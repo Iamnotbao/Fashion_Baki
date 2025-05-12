@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./ProductList.css";
 import Product from "../../components/Product/Product";
 import SideBar from "../../components/SideBar/SideBar";
@@ -154,27 +154,28 @@ console.log(totalPage);
                 onChange={handleInputChange}
                 type="text"
                 className="search-search__input"
-                placeholder="Tìm sản phẩm..."
+                placeholder="Find your product..."
               />
-              <a href="" className="search-search__button" onClick={handleSearch}>
+              <Link to="" className="search-search__button" onClick={handleSearch}>
                 <i className="fa-solid fa-magnifying-glass"></i>
-              </a>
+              </Link>
             </label>
           </div>
         </div>
         <div className="category__content" style={{ margin: "0", padding: "10px 0px", width: "100%" }}>
           <div className="category__title" onClick={fetchData}>
-            <a
+            <Link
               style={{
                 cursor: "pointer",
                 fontSize: "20px",
                 textTransform: "uppercase",
                 textDecoration: "none",
                 fontWeight: "bold",
+                color: "black",
               }}
             >
               Thời Trang Nam(<span>{products.length}</span>)
-            </a>
+            </Link>
           </div>
           <div className="category__action">
             <div>
@@ -187,16 +188,16 @@ console.log(totalPage);
               Sort By
               <ul className="sort__actions">
                 <li>
-                  <a href="">Featured</a>
+                  <Link to="">Featured</Link>
                 </li>
                 <li>
-                  <a href="">Newest</a>
+                  <Link to="">Newest</Link>
                 </li>
                 <li>
-                  <a href="">Price: High-Low</a>
+                  <Link to="">Price: High-Low</Link>
                 </li>
                 <li>
-                  <a href="">Price: Low-High</a>
+                  <Link to="">Price: Low-High</Link>
                 </li>
               </ul>
             </div>

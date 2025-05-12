@@ -34,7 +34,7 @@ const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, 
                   handleCategoryClick(c);
                 }}
               >
-                <Link style={{ textDecoration: "none" }}>{c.name}</Link>
+                <Link>{c.name}</Link>
               </li>
             ))}
           <li className="nav">
