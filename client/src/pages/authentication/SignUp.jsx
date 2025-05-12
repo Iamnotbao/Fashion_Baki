@@ -70,32 +70,14 @@ const SignUp = () => {
             width="100%"
             maxWidth={410}
             mx="auto"
+            my={10}
           >
             <Box width="100%">
               <Typography variant="h3">Sign Up</Typography>
               <Typography mt={1.5} variant="body2" color="text.disabled">
                 Join us and start your journey today!
               </Typography>
-
-              <Button
-                variant="contained"
-                color="secondary"
-                size="large"
-                fullWidth
-                startIcon={<Icon icon="logos:google-icon" />}
-                sx={{
-                  mt: 4,
-                  fontWeight: 600,
-                  bgcolor: 'info.main',
-                  '& .MuiButton-startIcon': { mr: 1.5 },
-                  '&:hover': { bgcolor: 'info.main' },
-                }}
-              >
-                Sign up with Google
-              </Button>
-
-              <Divider sx={{ my: 3 }}>or</Divider>
-
+              <Divider sx={{ my: 3 }}></Divider>
               <Box component="form" onSubmit={handleSubmit}>
               {errPop && errorUser&&(<Typography variant="body1" style={{fontWeight:"Bold", color:"red",textAlign:"center",fontSize:"20px"}}>{errorUser}</Typography>)} 
                 <TextField

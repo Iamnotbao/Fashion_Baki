@@ -85,10 +85,7 @@ const SignIn = () => {
     }
 
   };
-  const handleTest = () => {
-    console.log(rootPaths.signup);
 
-  }
   useEffect(()=>{
     if(accessToken){
       const loginByGoogle =async()=>{
@@ -112,7 +109,7 @@ const SignIn = () => {
         spacing={4}
         px={3}
       >
-        <Box width={0.3} py={6} ml={0}>
+        <Box width={0.3} py={10} ml={0}>
           <Stack width="100%"
             maxWidth={410}
             mx="auto">
@@ -204,7 +201,7 @@ const SignIn = () => {
               letterSpacing={0.25}
             >
               Not registered yet?{' '}
-              <Link to={paths.signup} color="primary.main" fontWeight={600} onClick={handleTest}>
+              <Link to={"/authentication/signUp"} color="primary.main" fontWeight={600}>
                 Create an Account
               </Link>
             </Typography>
