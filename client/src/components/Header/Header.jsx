@@ -217,8 +217,8 @@ const Header = () => {
                         </label>
                     </div>
                     <div className="header-actions__button">
-                        <Link onClick={handleUser} className="user">
-                            <i class="fa-solid fa-user"></i></Link>
+                        <a onClick={handleUser} className="user">
+                            <i class="fa-solid fa-user"></i></a>
                         <ul style={{ width: "100px" }}>
                             <li  className="profile" onClick={() => navigation("/user/info")}><Link>{(username !== null) ? (username) : ("no-data")}</Link></li>
                             {(username !== null) ? (<li className="logout" style={{marginBottom:"0"}}  onClick={handleClickOpen}><Link>Log out</Link></li>) : (<li className="logout" style={{marginBottom:"0"}}><Link to={"/authentication/signIn"}>Log In</Link></li>)}
