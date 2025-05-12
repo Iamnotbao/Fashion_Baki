@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./SideBar.css";
 
 const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, categoryName, catID }) => {
@@ -8,7 +9,7 @@ const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, 
       <div className="col-md-2 sidebar">
         <ul className="row">
           <li className="nav">
-            <a
+            <Link
               style={{
                 textDecoration: "none",
                 color: "black",
@@ -16,13 +17,13 @@ const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, 
                 fontWeight: 800,
                 textTransform: "uppercase",
               }}
-              href=""
+              to=""
             >
               {categoryName}
               <span>
                 <i className="fa-solid fa-chevron-right"></i>
               </span>
-            </a>
+            </Link>
           </li>
           {cat &&
             cat.map((c) => (
@@ -33,11 +34,11 @@ const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, 
                   handleCategoryClick(c);
                 }}
               >
-                <a style={{ textDecoration: "none" }}>{c.name}</a>
+                <Link style={{ textDecoration: "none" }}>{c.name}</Link>
               </li>
             ))}
           <li className="nav">
-            <a
+            <Link
               style={{
                 textDecoration: "none",
                 color: "black",
@@ -45,13 +46,13 @@ const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, 
                 fontWeight: 800,
                 textTransform: "uppercase",
               }}
-              href=""
+              to=""
             >
               Brand
               <span>
                 <i className="fa-solid fa-chevron-right"></i>
               </span>
-            </a>
+            </Link>
           </li>
           {brand &&
             brand.map((b) => (
@@ -62,7 +63,7 @@ const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, 
                   fetchBrand(b.id);
                 }}
               >
-                <a>{b.name}</a>
+                <Link>{b.name}</Link>
               </li>
             ))}
         </ul>
