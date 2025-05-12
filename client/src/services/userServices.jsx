@@ -9,6 +9,8 @@ export const fetchUser = async () => {
             },
             withCredentials: true
         });
+        console.log("user", response.data);
+        
         return response.data ?  response.data : "";
     } catch (error) {
         console.log(error);

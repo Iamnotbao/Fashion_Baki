@@ -7,8 +7,6 @@ import { Box, TextField, Button, Typography, Paper, CircularProgress, Chip } fro
 import LocalOfferIcon from "@mui/icons-material/LocalOffer"
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"
 import ErrorIcon from "@mui/icons-material/Error"
-import WifiIcon from "@mui/icons-material/Wifi"
-import WifiOffIcon from "@mui/icons-material/WifiOff"
 
 export const CompactDiscount = ({ originalTotal, onDiscountApplied }) => {
   const [stompClient, setStompClient] = useState(null)
@@ -23,20 +21,23 @@ export const CompactDiscount = ({ originalTotal, onDiscountApplied }) => {
   const user = JSON.parse(localStorage.getItem("user") || "{}")
   const userId = user.id ? String(user.id) : null
 
-  // Update original price when props change
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const websocketPath = import.meta.env.VITE_WEBSOCKET_PATH
+  const url = new URL(apiUrl);
+  url.pathname = websocketPath; 
+  const websocketUrl = url.toString(); 
+
   useEffect(() => {
     if (originalTotal !== undefined && originalTotal !== null) {
       setOriginalPrice(originalTotal)
-      // Only update discounted price if no discount has been applied yet
       if (discountedPrice === originalPrice) {
         setDiscountedPrice(originalTotal)
       }
     }
   }, [originalTotal])
 
-  // WebSocket connection for discount
   useEffect(() => {
-    const socket = new SockJS("/ws")
+    const socket = new SockJS(websocketUrl)
     const client = new Client({
       webSocketFactory: () => socket,
       debug: (str) => console.log(str),
@@ -49,7 +50,7 @@ export const CompactDiscount = ({ originalTotal, onDiscountApplied }) => {
       console.log("Connected to WebSocket:", frame)
       setConnected(true)
       setError("")
-      client.subscribe("/topic/discount", (message) => {
+      client.subscribe(`${url}/topic/discount`, (message) => {
         const response = JSON.parse(message.body)
         console.log("Received message:", response)
 
@@ -61,7 +62,6 @@ export const CompactDiscount = ({ originalTotal, onDiscountApplied }) => {
         setMessage(response.message || "No message")
         setLoading(false)
 
-        // Notify parent component about the discount
         if (onDiscountApplied && typeof onDiscountApplied === "function") {
           onDiscountApplied({
             originalPrice: newOriginalPrice,
