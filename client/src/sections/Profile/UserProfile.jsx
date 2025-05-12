@@ -12,6 +12,8 @@ const UserProfile = () => {
     const [newProfile, setNewProfile] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const baseURL = import.meta.env.VITE_API_URL ;
+    console.log("hello user");
+    
 
     useEffect(() => {
         const fetchData = async () => {
