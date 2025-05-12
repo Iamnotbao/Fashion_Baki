@@ -19,7 +19,7 @@ import BackGround from "../../assets/images/logo/login.png"
 import GoogleAuthentication from './GoogleAuthentication';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { googleAuthentication } from '../../services/authenticationServices';
-import Cookies from 'js-cookie';
+
 
 
 
@@ -33,11 +33,8 @@ const SignIn = () => {
   const [isGoogle, setIsGoogle] = useState(false);
   const clientId = "52237736446-l0nv46sq881vrsjfs7d9as2e43586h9h.apps.googleusercontent.com";
   const [accessToken,setAccessToken] = useState({});
-  console.log("err", errorUser);
-  console.log(accessToken);
-  
   const base = import.meta.env.VITE_API_URL;
-  console.log("auth", base);
+
   
   const check = async () => {
     try {
