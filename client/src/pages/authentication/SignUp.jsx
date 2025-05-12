@@ -17,7 +17,7 @@ import BackGround from "../../assets/images/logo/login.png"
 const SignUp = () => {
   const [user, setUser] = useState({ username: '', email: '', password: '', phone: '', address: '' });
   const [showPassword, setShowPassword] = useState(false);
-  const baseURL = "/api/auth/register"
+  const baseURL = import.meta.env.VITE_API_URL;
   const [errorUser,setErrorUser] = useState(true);
   const[errPop, setErrPop] = useState(false);
   
@@ -34,7 +34,7 @@ const SignUp = () => {
     console.log(user);
     let response;
     try {
-      response = await axios.post(baseURL, user, {
+      response = await axios.post(`${baseURL}/auth/register`, user, {
         headers: {
           'Content-Type': 'application/json'
         }

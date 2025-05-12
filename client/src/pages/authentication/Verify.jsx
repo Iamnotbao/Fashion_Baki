@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from "react-router-dom"
 import "./Verify.css"
 import { verifyPassword, verifyUser } from "../../services/authenticationServices"
 const Verify = () => {
-    const baseURL = "/api/auth/verify"
     const [key, setKey] = useState(null);
     const navigation = useNavigate();
     const email = localStorage.getItem("email");

@@ -22,13 +22,12 @@ import Recommendation from "../../components/Recommendation/Recommendation"
 
 const ProductDetail = () => {
   const { id } = useParams()
-  // const base = "/api/service/products/category"
   const [count, setCount] = useState(1)
   const [sizePop, setSizePop] = useState(false)
   const swiperRef = useRef(null)
   const [products, setProducts] = useState([])
   const baseURL = import.meta.env.VITE_API_URL
-  const url = "/api/service/categories"
+  // const url = "/api/service/categories"
   const [productInfo, setProductInfo] = useState([])
   const [category, setCategory] = useState([])
   const [quantity, setQuantity] = useState({})
