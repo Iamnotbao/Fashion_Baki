@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useEffect, useState } from "react"
 import SockJS from "sockjs-client"
@@ -50,7 +50,7 @@ export const CompactDiscount = ({ originalTotal, onDiscountApplied }) => {
       console.log("Connected to WebSocket:", frame)
       setConnected(true)
       setError("")
-      client.subscribe(`${url}/topic/discount`, (message) => {
+      client.subscribe("/topic/discount", (message) => {
         const response = JSON.parse(message.body)
         console.log("Received message:", response)
 
