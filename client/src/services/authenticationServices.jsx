@@ -6,7 +6,7 @@ export const verifyUser = async (token) => {
         const response = await axios.get(`${baseURL}/auth/verify?token=${token}`, {
             headers: {
                 "Content-Type": "application/json"
-            }
+            },withCredentials: true
         });
         console.log(response.data);
         if (response.data) {
@@ -20,7 +20,11 @@ export const verifyUser = async (token) => {
 
 export const forgotPassword = async (email) => {
     try {
-        const response = await axios.post(`${baseURL}/auth/reset?email=${email}`)
+        const response = await axios.post(`${baseURL}/auth/reset?email=${email}`,{
+            headers: {
+                "Content-Type": "application/json"
+            }, withCredentials: true
+        })
         return response.data;
     } catch (error) {
         console.log(error);
@@ -29,7 +33,11 @@ export const forgotPassword = async (email) => {
 }
 export const verifyPassword = async (token) => {
     try {
-        const response = await axios.post(`${baseURL}/reset/verify?token=${token}`)
+        const response = await axios.post(`${baseURL}/reset/verify?token=${token}`,{
+            headers: {
+                "Content-Type": "application/json"
+            }, withCredentials: true
+        })
         if (response.data) { 
             return response.data; 
         }
@@ -43,7 +51,11 @@ export const verifyPassword = async (token) => {
 
 export const resetPassword = async (email, password) => {
     try {
-        const response = await axios.put(`${baseURL}/resetpass?email=${email}&password=${password}`)
+        const response = await axios.put(`${baseURL}/resetpass?email=${email}&password=${password}`,{
+            headers: {
+                "Content-Type": "application/json"
+            },withCredentials: true
+        })
         console.log(response);
         
         if (response.data) { 
