@@ -18,6 +18,7 @@ import PopupSize from "../../components/Popup/PopupSize"
 import "./ProductDetail.css"
 import Description from "../../components/Description/Description"
 import Recommendation from "../../components/Recommendation/Recommendation"
+import Stock from "../../components/Button/Stock"
 
 
 const ProductDetail = () => {
@@ -38,17 +39,22 @@ const ProductDetail = () => {
   const [color, setColor] = useState([])
   const [size, setSize] = useState([])
   const addToCart = AddToCart()
-  const { updateCart } = UpdateCart()
   const fetchCart = useFetchCart()
   const { items } = useSelector((state) => state.cart)
+  // const { selectedProduct, setSelectedProduct } = useState({});
   console.log("color", baseURL)
 
   const handleDescription = () => {
     setOnDescription(!onDesciption)
   }
-
   const handleChangeColorOrSize = (value, setValue) => {
     setValue(value)
+    // setSelectedProduct({
+    //         [productInfo.id]: {
+    //             ...(selectedProduct[productInfo.id] || {}),
+    //             [name]: value,
+    //         },
+    //     });
   }
 
   const handleToggleCollapse = () => {
@@ -366,9 +372,10 @@ const ProductDetail = () => {
                       </div>
                     </div>
                     <div className="swiper-slider">
-                      <button onClick={() => handleAddCart(productInfo.id, count)} className="Add">
+                      {/* <button onClick={() => handleAddCart(productInfo.id, count)} className="Add">
                         <span className="text">Add To Card</span>
-                      </button>
+                      </button> */}
+                      
                     </div>
                     <div className="product-single__policy">
                       <div className="product-policy">

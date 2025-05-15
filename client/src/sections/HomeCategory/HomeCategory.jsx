@@ -8,6 +8,7 @@ import AddToCart from "../../components/Cart/addToCart";
 import Sizes from "../../components/Product/Size";
 import BannerLock from "../../components/Banner/BannerLock";
 import ProductDetail from "../../pages/product/ProductDetail";
+import Stock from "../../components/Button/Stock";
 
 
 
@@ -86,18 +87,7 @@ const HomeCategory = ({ eachBanner }) => {
             },
         });
     }
-    const isOutOfStock = (product) => {
-        const selections = selectedProduct[product.id] || {};
-        const selectedSize = selections.size || product.sizes?.[0];
-        const selectedColor = selections.color || product.colors?.[0];
 
-        const stockItem = product.stocks?.find(
-            (item) => item.size === selectedSize && item.color === selectedColor
-        );
-        console.log("stockItem", stockItem);
-        
-        return !stockItem || stockItem.quantity < 1;
-    };
 
     return (
         <section className="home-product">
@@ -203,15 +193,7 @@ const HomeCategory = ({ eachBanner }) => {
                                                         </div>
                                                     </div>
                                                     <Sizes handleOption={handleChangeSizeOrColor} setSelectedSize={setSelectedProduct} selectedProduct={selectedProduct} product={product} />
-                                                    {isOutOfStock(product) ? (
-                                                        <button className="outOfCart" disabled style={{ backgroundColor: '#ccc', cursor: 'not-allowed' }}>
-                                                            Out of Stock
-                                                        </button>
-                                                    ) : (
-                                                        <button className="addToCart" onClick={() => handleCart(product)}>
-                                                            Add to Cart
-                                                        </button>
-                                                    )}
+                                                   <Stock product={product} selectedProduct={selectedProduct} />
                                                 </SwiperSlide>
                                             ))}
 
