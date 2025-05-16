@@ -13,8 +13,8 @@ const HomeBrand = () => {
     const [productsByBrand, setProductsByBrand] = useState({});
     const [brands, setBrands] = useState([]);
     const navigation = useNavigate();
-    const baseURL = "/api/service/products/brand";
-    const brandsURL = "/api/service/brands";
+    const baseURL = import.meta.env.VITE_API_URL+"/service/products/brand";
+    const brandsURL = import.meta.env.VITE_API_URL+"/service/brands";
     const swiperRef = useRef(null);
     // const prevButtonRef = useRef(null);
     // const nextButtonRef = useRef(null);
@@ -22,7 +22,10 @@ const HomeBrand = () => {
     useEffect(() => {
         const fetchBrands = async () => {
             try {
-                const res = await axios.get(brandsURL);
+                const res = await axios.get(brandsURL,{
+                    headers: {
+                        "Content-Type": "application/json"},withCredentials: true
+                });
                 setBrands(res.data);
             } catch (error) {
                 console.error("Error fetching brands:", error);
