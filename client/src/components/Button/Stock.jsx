@@ -8,7 +8,6 @@ const Stock = ({ product, selectedProduct }) => {
         const stockItem = product.stocks?.find(
             (item) => item.size === selectedSize && item.color === selectedColor
         );
-        console.log("stockItem", stockItem);
 
         return !stockItem || stockItem.quantity < 1;
     };

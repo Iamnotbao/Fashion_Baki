@@ -26,8 +26,8 @@ const SideBarProfile = () => {
                     </Link> <Link to="/account/coolcash-point" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip5_85.png" alt="Nhật ký hoạt động" /></span>
                         Baki Cash
                         <span><i class="fa-solid fa-arrow-right"></i></span>
-                    </Link> <Link to="/account/voucher-wallet" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip1_59.png" alt="Ví Voucher" /></span>
-                        Voucher Wallets
+                    </Link> <Link to="/user/discount" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip1_59.png" alt="Ví Voucher" /></span>
+                        Voucher
                         <span><i class="fa-solid fa-arrow-right"></i></span>
                     </Link> <Link to="/user/tracking-order" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip2_76.png" alt="Sổ địa chỉ" /></span>
                         Tracking Order
@@ -35,8 +35,8 @@ const SideBarProfile = () => {
                     </Link> <Link to="#" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip3_71.png" alt="Rating &amp; Feedback" /></span>
                         Q&A
                         <span><i class="fa-solid fa-arrow-right"></i></span>
-                    </Link> <Link to="/account/faq" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip5_95.png" alt="Chính sách &amp; Câu hỏi thường gặp" /></span>
-                        Policy &amp;
+                    </Link> <Link to="/user/notification" class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip5_95.png" alt="Chính sách &amp; Câu hỏi thường gặp" /></span>
+                        Notification  
                         <span><i class="fa-solid fa-arrow-right"></i></span>
                     </Link> <Link onClick={handleClickOpen} class="account-sidebar-item"><span class="circle"><img src="https://mcdn.coolmate.me/image/September2023/mceclip4_6.png" alt="Đăng xuất" /></span>
                         Log out

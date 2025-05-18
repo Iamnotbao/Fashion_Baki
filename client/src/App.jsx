@@ -20,6 +20,7 @@ import UserTracking from "./sections/Profile/UserTracking";
 import ForgotPassword from "./pages/authentication/ForgotPassword";
 import ResetPassword from "./pages/authentication/ResetPassword";
 import Test from "./sections/Test/Test";
+import UserNotification from "./sections/Profile/UserNotification";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuthentication();
@@ -63,6 +64,7 @@ const App = () => (
           <Route path={`${rootPaths.profileRoot}/info`} element={<UserProfile />} />
           <Route path={`${rootPaths.profileRoot}/cart`} element={<UserCart />} />
           <Route path={`${rootPaths.profileRoot}/tracking-order`} element={<UserTracking />} />
+          <Route path={`${rootPaths.profileRoot}/notification`} element={<UserNotification />} />
         </Route>
       </Routes>
     </Router>
