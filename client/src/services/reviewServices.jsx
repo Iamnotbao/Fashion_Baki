@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = '/community/review'; 
+const baseUrl = import.meta.env.VITE_API_NODE_URL; 
 
 export const getAllReview = async () => {
     try {
