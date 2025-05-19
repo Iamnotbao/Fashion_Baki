@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Typography,
     Button,
@@ -24,61 +24,77 @@ import {
     AttachMoney as AttachMoneyIcon,
     CalendarToday as CalendarTodayIcon
 } from '@mui/icons-material';
+import { fetchUserDiscount } from '../../services/userServices';
 
-const ListDiscount = ({handleClose}) => {
+const ListDiscount = ({ handleClose }) => {
     // State for managing the dialog
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [discountCodes, setDiscountCodes] = useState([]);
     const [selectedCode, setSelectedCode] = useState(null);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
+    const { id } = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
 
-    console.log("select", selectedCode);
 
 
-  
-    const discountCodes = [
-        {
-            id: 1,
-            code: 'SUMMER25',
-            description: 'Summer Sale Discount',
-            discount: 25,
-            type: 'percentage',
-            expiryDate: '2024-08-31',
-            minPurchase: 50
-        },
-        {
-            id: 2,
-            code: 'WELCOME10',
-            description: 'New Customer Discount',
-            discount: 10,
-            type: 'percentage',
-            expiryDate: '2024-12-31',
-            minPurchase: 0
-        },
-        {
-            id: 3,
-            code: 'FREESHIP',
-            description: 'Free Shipping on Orders',
-            discount: 15,
-            type: 'fixed',
-            expiryDate: '2024-07-15',
-            minPurchase: 75
-        },
-        {
-            id: 4,
-            code: 'FLASH50',
-            description: 'Flash Sale - Limited Time',
-            discount: 50,
-            type: 'percentage',
-            expiryDate: '2024-06-30',
-            minPurchase: 100
+    fetchUserDiscount
+    useEffect(() => {
+        if (!loading) {
+            fetchDiscount();
         }
-    ];
+    }, [loading])
+
+    //     {
+    //         id: 1,
+    //         code: 'SUMMER25',
+    //         description: 'Summer Sale Discount',
+    //         discount: 25,
+    //         type: 'percentage',
+    //         expiryDate: '2024-08-31',
+    //         minPurchase: 50
+    //     },
+    //     {
+    //         id: 2,
+    //         code: 'WELCOME10',
+    //         description: 'New Customer Discount',
+    //         discount: 10,
+    //         type: 'percentage',
+    //         expiryDate: '2024-12-31',
+    //         minPurchase: 0
+    //     },
+    //     {
+    //         id: 3,
+    //         code: 'FREESHIP',
+    //         description: 'Free Shipping on Orders',
+    //         discount: 15,
+    //         type: 'fixed',
+    //         expiryDate: '2024-07-15',
+    //         minPurchase: 75
+    //     },
+    //     {
+    //         id: 4,
+    //         code: 'FLASH50',
+    //         description: 'Flash Sale - Limited Time',
+    //         discount: 50,
+    //         type: 'percentage',
+    //         expiryDate: '2024-06-30',
+    //         minPurchase: 100
+    //     }
+    // ];
+
+    const fetchDiscount = async () => {
+        const response = await fetchUserDiscount(id);
+        console.log("check discounts", response);
+        if (response) {
+            setDiscountCodes(response)
+            setLoading(true)
+        }
+    }
 
 
 
 
-  
     const handleSelectCode = (code) => {
         setSelectedCode(code);
         setOpen(false);
@@ -86,10 +102,10 @@ const ListDiscount = ({handleClose}) => {
         setSnackbarOpen(true);
     };
 
-  
+
     const handleCopyCode = () => {
         if (selectedCode) {
-            navigator.clipboard.writeText(selectedCode.code)
+            navigator.clipboard.writeText(selectedCode.discountCode.code)
                 .then(() => {
                     setSnackbarMessage('Discount code copied to clipboard!');
                     setSnackbarOpen(true);
@@ -126,7 +142,7 @@ const ListDiscount = ({handleClose}) => {
             <Divider />
             <List sx={{ pt: 0 }}>
                 {discountCodes.map((code) => (
-                    <React.Fragment key={code.id}>
+                    <React.Fragment key={code.discountCode.id}>
                         <ListItem
                             button
                             onClick={() => handleSelectCode(code)}
@@ -138,10 +154,10 @@ const ListDiscount = ({handleClose}) => {
                             <ListItemText
                                 primary={
                                     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <Typography variant="subtitle1">{code.code}</Typography>
+                                        <Typography variant="subtitle1">{code.discountCode.code}</Typography>
                                         <Chip
                                             size="small"
-                                            label={`${code.discount}${code.type === 'percentage' ? '%' : '$'} off`}
+                                            label={`${code.discountCode.percentage}% off`}
                                             color="primary"
                                             variant="outlined"
                                         />
@@ -160,11 +176,9 @@ const ListDiscount = ({handleClose}) => {
                                 }
                                 secondary={
                                     <>
-                                        <Typography component="span" variant="body2" color="text.primary">
-                                            {code.description}
-                                        </Typography>
+                                      
                                         <Typography component="div" variant="caption" color="text.secondary">
-                                            Expires: {formatDate(code.expiryDate)}
+                                            Expires: {formatDate(code.discountCode.expirationDate)}
                                             {code.minPurchase > 0 && ` • Min. purchase: $${code.minPurchase.toFixed(2)}`}
                                         </Typography>
                                     </>

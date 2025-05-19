@@ -193,7 +193,7 @@ const HomeCategory = ({ eachBanner }) => {
                                                         </div>
                                                     </div>
                                                     <Sizes handleOption={handleChangeSizeOrColor} setSelectedSize={setSelectedProduct} selectedProduct={selectedProduct} product={product} />
-                                                   <Stock product={product} selectedProduct={selectedProduct} />
+                                                   <Stock product={product} selectedProduct={selectedProduct} handleCart={handleCart} />
                                                 </SwiperSlide>
                                             ))}
 

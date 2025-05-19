@@ -1,5 +1,5 @@
 
-const Stock = ({ product, selectedProduct }) => {
+const Stock = ({ product, selectedProduct,handleCart }) => {
     const isOutOfStock = (product) => {
         const selections = selectedProduct[product.id] || {};
         const selectedSize = selections.size || product.sizes?.[0];
