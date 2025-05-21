@@ -83,10 +83,7 @@ const Header = () => {
         }
     }, [items]);
 
-    const handleUser = () => {
-        navigation("/user/info");
 
-    }
 
     const handleOrder = () => {
         navigation("/product/cart_detail");
