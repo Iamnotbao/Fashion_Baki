@@ -5,6 +5,7 @@ import "./NotificationCard.css"
 import { getAllNotifications, markAsRead } from "../../services/notificationServices";
 import SockJS from "sockjs-client"
 import { Client, Stomp } from "@stomp/stompjs"
+import { ToastContainer, toast } from "react-toastify";
 
 export default function NotificationCard({ userId }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -53,8 +54,9 @@ export default function NotificationCard({ userId }) {
       console.log("WebSocket connected:", frame);
 
       stompClient.subscribe(`/user/${userId}/queue/notifications`, (message) => {
+        
         const notification = JSON.parse(message.body);
-        console.log("Received notification:", notification);
+       toast.success(`You have received a new message.`);
 
         setNotifications((prev) => [
           {
@@ -68,6 +70,7 @@ export default function NotificationCard({ userId }) {
           ...prev,
         ]);
       });
+     
     }, (error) => {
       console.error("WebSocket connection error:", error);
     });
@@ -81,19 +84,19 @@ export default function NotificationCard({ userId }) {
     };
   }, []);
 
-  // Fetch initial notifications
+  
   const fetchNotifications = async () => {
 
     try {
       const result = await getAllNotifications(userId);
       if (result) {
-        // Map API response to match WebSocket notification format
+       
         setNotifications(
           result.map((n) => ({
             id: n.id,
             title: n.title,
             content: n.content,
-            sendAt: n.sentAt || n.sendAt, // Handle potential field name mismatch
+            sendAt: n.sentAt || n.sendAt, 
             read: n.status === "UNREAD" ? false : true,
             status: n.status,
           }))
@@ -107,29 +110,13 @@ export default function NotificationCard({ userId }) {
     }
   };
 
-  // Fetch notifications on mount
   useEffect(() => {
     if (!loading) {
       fetchNotifications();
     }
 
   }, [loading])
-  // const fetchNotifications = async () => {
-  //   const result = await getAllNotifications(userId);
-  //   console.log("result", result);
-  //   if (result) {
-  //     setNotifications(result);
-  //     setLoading(true);
-  //   } else {
-  //     console.log("Error fetching notifications");
-  //   }
-  // }
-  // useEffect(() => {
-  //   if (!loading) {
-  //     fetchNotifications();
-  //   }
 
-  // }, [loading])
 
   const markAllAsRead = async (id) => {
     console.log("ok");
@@ -141,6 +128,8 @@ export default function NotificationCard({ userId }) {
   }
 
   return (
+    <>
+    <ToastContainer position="top-right" />
     <div className="notification-container">
       <div className="avatar-container" onClick={handleAvatarClick}>
         <i class="fa-solid fa-bell"></i>
@@ -207,5 +196,6 @@ export default function NotificationCard({ userId }) {
         )}
       </div>
     </div>
+    </>
   )
 }

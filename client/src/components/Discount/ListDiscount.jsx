@@ -45,43 +45,7 @@ const ListDiscount = ({ handleClose }) => {
         }
     }, [loading])
 
-    //     {
-    //         id: 1,
-    //         code: 'SUMMER25',
-    //         description: 'Summer Sale Discount',
-    //         discount: 25,
-    //         type: 'percentage',
-    //         expiryDate: '2024-08-31',
-    //         minPurchase: 50
-    //     },
-    //     {
-    //         id: 2,
-    //         code: 'WELCOME10',
-    //         description: 'New Customer Discount',
-    //         discount: 10,
-    //         type: 'percentage',
-    //         expiryDate: '2024-12-31',
-    //         minPurchase: 0
-    //     },
-    //     {
-    //         id: 3,
-    //         code: 'FREESHIP',
-    //         description: 'Free Shipping on Orders',
-    //         discount: 15,
-    //         type: 'fixed',
-    //         expiryDate: '2024-07-15',
-    //         minPurchase: 75
-    //     },
-    //     {
-    //         id: 4,
-    //         code: 'FLASH50',
-    //         description: 'Flash Sale - Limited Time',
-    //         discount: 50,
-    //         type: 'percentage',
-    //         expiryDate: '2024-06-30',
-    //         minPurchase: 100
-    //     }
-    // ];
+   
 
     const fetchDiscount = async () => {
         const response = await fetchUserDiscount(id);
