@@ -6,8 +6,9 @@ import { getAllNotifications, markAsRead } from "../../services/notificationServ
 import SockJS from "sockjs-client"
 import { Client, Stomp } from "@stomp/stompjs"
 import { ToastContainer, toast } from "react-toastify";
+import markNotification from "./MarkNotification";
 
-export default function NotificationCard({ userId }) {
+export default function NotificationCard({ userId, notiLength }) {
   const [isOpen, setIsOpen] = useState(false)
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,9 +19,10 @@ export default function NotificationCard({ userId }) {
   url.pathname = websocketPath;
   const websocketUrl = url.toString();
   const stompClientRef = useRef(null);
+  const mark = markNotification();
 
+console.log(userId);
 
-  const unreadCount = notifications.filter((notification) => !notification.read).length
 
   const handleAvatarClick = () => {
     setIsOpen(!isOpen)
@@ -40,7 +42,7 @@ export default function NotificationCard({ userId }) {
   }, [])
 
   const markedRead = async (id) => {
-    await markAsRead(id);
+    mark(id,userId);
     setLoading(false);
 
   }
@@ -131,14 +133,14 @@ export default function NotificationCard({ userId }) {
     <div className="notification-container">
       <div className="avatar-container" onClick={handleAvatarClick}>
         <i class="fa-solid fa-bell"></i>
-        {unreadCount > 0 && <div className="badge">{unreadCount}</div>}
+        {notiLength > 0 && <div className="badge">{notiLength}</div>}
       </div>
 
       <div className={`notification-card ${isOpen ? "open" : ""}`} ref={notificationRef}>
         <div className="notification-header">
           <h3>Notifications</h3>
           <div className="header-actions">
-            {unreadCount > 0 && (
+            {notiLength > 0 && (
               <button className="mark-read-button" onClick={markAllAsRead}>
                 Mark all as read
               </button>

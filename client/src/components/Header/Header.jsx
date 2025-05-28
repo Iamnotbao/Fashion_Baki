@@ -11,6 +11,7 @@ import Logout from "../Logout/Logout";
 import { createShipping } from "../../services/shippingServices";
 import { checkStatus } from "../../services/paymentServices";
 import NotificationCard from "../Notification/NotificationCard";
+import fetchNotification from "../Notification/FetchNotification";
 const Header = () => {
 
     const [category, setCategory] = useState([]);
@@ -22,7 +23,10 @@ const Header = () => {
     const id = localStorage.getItem("id");
     const [open, setOpen] = useState(false);
     const [length, setLength] = useState(0);
+     const [notiLength, setNotiLength] = useState(0);
     const { items, status, error } = useSelector((state) => state.cart);
+    const{notifications} = useSelector((state) => state.notification);
+    const fetchNoti = fetchNotification();
     const fetchCart = useFetchCart();
     const [loading, setLoading] = useState(false);
     const { removeCart } = RemoveCart();
@@ -31,7 +35,7 @@ const Header = () => {
     const queryParams = new URLSearchParams(location.search);
     const orderId = queryParams.get("orderId");
     const resultCode = queryParams.get("resultCode");
-    console.log(id);
+    console.log("finish fetching:", notiLength);
 
     useEffect(() => {
         const processShipping = async () => {
@@ -76,6 +80,7 @@ const Header = () => {
     }
     useEffect(() => {
         fetchCart();
+        fetchNoti(id);
         setLoading(true)
     }, [loading]);
     useEffect(() => {
@@ -83,7 +88,17 @@ const Header = () => {
             setLength(items.cartDetails.length);
         }
     }, [items]);
-
+    
+    useEffect(() => {
+        if (loading && notifications && notifications.length > 0) {
+            console.log("run notifajijadiad: ", notifications);
+            
+                 const unreadNotification =  notifications.filter((notification) => notification.status==="UNREAD").length
+                 setNotiLength(unreadNotification);
+           
+        }
+    }, [notifications]);
+    
 
 
     const handleOrder = () => {
@@ -278,7 +293,7 @@ const Header = () => {
 
                     </div>
                     <div className="header-actions__notification" >
-                        <NotificationCard userId={id} />
+                        <NotificationCard userId={id} notiLength={notiLength} />
                     </div>
 
                 </div>

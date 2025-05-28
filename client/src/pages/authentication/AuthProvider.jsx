@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import useFetchCart from "../../components/Cart/fetchCart";
 import { fetchUser } from "../../services/userServices";
 
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -24,9 +25,10 @@ export const AuthProvider = ({ children }) => {
     console.log("Logged in as:", username);
     localStorage.setItem("username", username); 
     localStorage.setItem("user",JSON.stringify(await fetchUser()));
- 
-   
+
     fetchCart();
+  
+    
     setIsAuthenticated(true);
   };
 
