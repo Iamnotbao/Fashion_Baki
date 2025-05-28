@@ -24,6 +24,8 @@ export const AuthProvider = ({ children }) => {
     console.log("Logged in as:", username);
     localStorage.setItem("username", username); 
     localStorage.setItem("user",JSON.stringify(await fetchUser()));
+ 
+   
     fetchCart();
     setIsAuthenticated(true);
   };

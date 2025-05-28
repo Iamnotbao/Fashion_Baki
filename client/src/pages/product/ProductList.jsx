@@ -23,12 +23,14 @@ const ProductList = () => {
   const { categoryName } = useParams();
   const [type, setType] = useState("category");
 
-console.log(totalPage);
+console.log("selected :",selectedSubCat);
 
   const handleBuy = (id) => {
     navigation("/product/" + id);
   };
-
+ const handleToList = (categoryID, categoryName) => {
+        navigation(`/product/all/${categoryName}`, { state: { id: categoryID } });
+    }
   useEffect(() => {
     if (subId) {
       fetchSubPro(subId);
@@ -54,10 +56,12 @@ console.log(totalPage);
     }
   };
 
-  const handleCategoryClick = (subcategory) => {
+  const handleCategoryClick = (subcategory,catID) => {
     setSelectedSubCat(subcategory);
+    console.log(catID);
+    
     navigation(`/product/all/${categoryName}?collection=${encodeURIComponent(subcategory.name)}`,
-      { state: { subId: subcategory.id, id: id } }
+      { state: { subId: subcategory.id, id: catID } }
     );
     fetchSubPro(subcategory.id);
 
@@ -212,7 +216,8 @@ console.log(totalPage);
               handleCategoryClick={handleCategoryClick}
               selectedSubCat={selectedSubCat}
               categoryName={categoryName}
-              catID={id}
+              catID={selectedSubCat?selectedSubCat.categoryId:id}
+              handleToList={handleToList}
             />
             <div className="col-md-10">
               <div className="row">

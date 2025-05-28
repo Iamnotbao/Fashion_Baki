@@ -105,9 +105,7 @@ export default function NotificationCard({ userId }) {
       }
     } catch (error) {
       console.error("Failed to fetch notifications:", error);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   useEffect(() => {

@@ -9,6 +9,7 @@ export const fetchUser = async () => {
             },
             withCredentials: true
         });
+         localStorage.setItem("id",response.data.id ); 
         console.log("user", response.data);
         
         return response.data ?  response.data : "";

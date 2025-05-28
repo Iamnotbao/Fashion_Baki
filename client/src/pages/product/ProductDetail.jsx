@@ -372,9 +372,9 @@ const ProductDetail = () => {
                       </div>
                     </div>
                     <div className="swiper-slider">
-                      {/* <button onClick={() => handleAddCart(productInfo.id, count)} className="Add">
+                      <button onClick={() => handleAddCart(productInfo.id, count)} className="Add">
                         <span className="text">Add To Card</span>
-                      </button> */}
+                      </button>
                       
                     </div>
                     <div className="product-single__policy">

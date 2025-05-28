@@ -73,8 +73,7 @@ const SignIn = () => {
       })
       console.log("check response", response);
       if (response.data) {
-        localStorage.setItem("username", response.data.username);
-        login(response.data.username);
+        await login(response.data.username);
         check();
         navigation("/");
       }

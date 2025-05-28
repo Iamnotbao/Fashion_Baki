@@ -18,7 +18,8 @@ const Header = () => {
     const [subCategory, setSubCategory] = useState([]);
 
     const navigation = useNavigate();
-    const {id,username} = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : { id: null, username: null };   
+    const {username} = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {username: null };   
+    const id = localStorage.getItem("id");
     const [open, setOpen] = useState(false);
     const [length, setLength] = useState(0);
     const { items, status, error } = useSelector((state) => state.cart);

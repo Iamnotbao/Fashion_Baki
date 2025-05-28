@@ -80,7 +80,7 @@ export default function NotificationSection() {
 
     return (
         <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
-            <Box sx={{ p: 2, bgcolor: "primary.main", color: "white" }}>
+            <Box sx={{ p: 2, bgcolor: "black", color: "white" }}>
                 <Typography variant="h5" component="h1" sx={{ display: "flex", alignItems: "center" }}>
                     <NotificationsIcon sx={{ mr: 1 }} />
                     Notification Board
@@ -90,7 +90,7 @@ export default function NotificationSection() {
             <Grid container sx={{ height: "70vh" }}>
 
                 <Grid item xs={12} md={4} sx={{ borderRight: "1px solid #e0e0e0" }}>
-                    <List sx={{ height: "100%", overflow: "auto", bgcolor: "background.paper" }}>
+                    <List sx={{ height: "70vh", maxHeight:"100%",  overflowY: "auto", bgcolor: "background.paper" }}>
                         {notifications.length > 0 ? (
                             notifications.map((notification) => (
                                 <React.Fragment key={notification.id}>

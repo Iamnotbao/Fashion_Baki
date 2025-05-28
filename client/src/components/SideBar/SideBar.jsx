@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import "./SideBar.css";
 
-const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, categoryName, catID }) => {
+const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, categoryName, catID,handleToList}) => {
   console.log("baby", catID);
   
   return (
     <>
       <div className="col-md-2 sidebar">
         <ul className="row">
-          <li className="nav">
+          <li className="nav" onClick={()=>handleToList(catID,categoryName)}>
             <Link
               style={{
                 textDecoration: "none",
@@ -31,7 +31,7 @@ const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, 
                 className={`category__items ${selectedSubCat && selectedSubCat.id === c.id ? "active" : ""}`}
                 key={c.id}
                 onClick={() => {
-                  handleCategoryClick(c);
+                  handleCategoryClick(c,catID);
                 }}
               >
                 <Link>{c.name}</Link>
