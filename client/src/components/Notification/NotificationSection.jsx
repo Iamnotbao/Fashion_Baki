@@ -28,7 +28,7 @@ export default function NotificationSection() {
     const [loading, setLoading] = useState(false);
     const [selectedNotification, setSelectedNotification] = useState(notifications[0])
     const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
-    const userId = user.id;
+    const userId = localStorage.getItem("id");
     console.log("boom", notifications);
 
 
