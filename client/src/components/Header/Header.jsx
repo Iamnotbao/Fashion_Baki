@@ -31,7 +31,7 @@ const Header = () => {
     const queryParams = new URLSearchParams(location.search);
     const orderId = queryParams.get("orderId");
     const resultCode = queryParams.get("resultCode");
-    console.log(items);
+    console.log(id);
 
     useEffect(() => {
         const processShipping = async () => {
