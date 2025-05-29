@@ -19,7 +19,7 @@ const Header = () => {
     const [subCategory, setSubCategory] = useState([]);
 
     const navigation = useNavigate();
-    const {username} = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {username: null };   
+    const username = localStorage.getItem("username") ? localStorage.getItem("username") : "Anonymous" ;   
     const id = localStorage.getItem("id");
     const [open, setOpen] = useState(false);
     const [length, setLength] = useState(0);
@@ -35,7 +35,7 @@ const Header = () => {
     const queryParams = new URLSearchParams(location.search);
     const orderId = queryParams.get("orderId");
     const resultCode = queryParams.get("resultCode");
-    console.log("finish fetching:", notiLength);
+    console.log("finish fetching:", notifications);
 
     useEffect(() => {
         const processShipping = async () => {
@@ -293,7 +293,7 @@ const Header = () => {
 
                     </div>
                     <div className="header-actions__notification" >
-                        <NotificationCard userId={id} notiLength={notiLength} />
+                        <NotificationCard userId={id} notiLength={notiLength} notifications={notifications} />
                     </div>
 
                 </div>

@@ -20,41 +20,39 @@ import {
     MarkEmailRead as MarkEmailReadIcon,
 } from "@mui/icons-material"
 import { getAllNotifications, markAsRead } from "../../services/notificationServices"
+import { useSelector } from "react-redux"
+import markNotification from "./MarkNotification"
 
 
 
 export default function NotificationSection() {
-    const [notifications, setNotifications] = useState([])
+    // const [notifications, setNotifications] = useState([])
+    const {notifications} = useSelector((state) => state.notification);
     const [loading, setLoading] = useState(false);
     const [selectedNotification, setSelectedNotification] = useState(notifications[0])
     const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
     const userId = localStorage.getItem("id");
+     const mark = markNotification();
     console.log("boom", notifications);
 
 
     const handleNotificationSelect =async (e,notification) => {
-        if (notification.status === "UNREAD") {
-            const updatedNotifications = notifications.map((item) =>
-                item.id === notification.id ? { ...item, read: true } : item,
-            )
-            setNotifications(updatedNotifications)
-        }
-        setSelectedNotification(notification)
         await handleMarkAsRead(notification.id,e);
+        setSelectedNotification(notification);
     }
 
     const handleMarkAsRead = async(id, event) => {
         event.stopPropagation()
         console.log("change", id);
         
-        await markAsRead(id);
+        await mark(id,userId);
         setLoading(false);
     }
 
     const handleDelete = (id, event) => {
         event.stopPropagation()
         const updatedNotifications = notifications.filter((item) => item.id !== id)
-        setNotifications(updatedNotifications)
+        // setNotifications(updatedNotifications)
 
         if (selectedNotification.id === id) {
             setSelectedNotification(updatedNotifications.length > 0 ? updatedNotifications[0] : null)
@@ -62,21 +60,21 @@ export default function NotificationSection() {
     }
 
 
-  const fetchNotifications = async () => {
-    const result = await getAllNotifications(userId);
-    console.log("result", result);
-    if (result) {
-      setNotifications(result);
-      setLoading(true);
-    } else {
-      console.log("Error fetching notifications");
-    }
-  }
-  useEffect(() => {
-    if (!loading) {
-      fetchNotifications();
-    }
-  }, [loading])
+//   const fetchNotifications = async () => {
+//     const result = await getAllNotifications(userId);
+//     console.log("result", result);
+//     if (result) {
+//       setNotifications(result);
+//       setLoading(true);
+//     } else {
+//       console.log("Error fetching notifications");
+//     }
+//   }
+//   useEffect(() => {
+//     if (!loading) {
+//       fetchNotifications();
+//     }
+//   }, [loading])
 
     return (
         <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>

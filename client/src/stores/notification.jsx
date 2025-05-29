@@ -31,7 +31,7 @@ const notificationSlice = createSlice({
             })
             .addCase(fetchNotificationThunk.rejected, (state, action) => {
                 state.status = 'failed';
-                state.notifications = action.error.message;
+                state.notifications = [];
             })
             .addCase(markNotificationThunk.fulfilled, (state) => {
                 state.status = 'succeeded';

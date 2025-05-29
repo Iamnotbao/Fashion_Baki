@@ -2,15 +2,14 @@
 
 import { useState, useRef, useEffect } from "react"
 import "./NotificationCard.css"
-import { getAllNotifications, markAsRead } from "../../services/notificationServices";
 import SockJS from "sockjs-client"
 import { Client, Stomp } from "@stomp/stompjs"
 import { ToastContainer, toast } from "react-toastify";
 import markNotification from "./MarkNotification";
+import fetchNotification from "./FetchNotification";
 
-export default function NotificationCard({ userId, notiLength }) {
+export default function NotificationCard({ userId, notiLength, notifications }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(false);
   const notificationRef = useRef(null)
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -20,8 +19,9 @@ export default function NotificationCard({ userId, notiLength }) {
   const websocketUrl = url.toString();
   const stompClientRef = useRef(null);
   const mark = markNotification();
+   const fetchAnnounce = fetchNotification();
 
-console.log(userId);
+  console.log(userId);
 
 
   const handleAvatarClick = () => {
@@ -42,7 +42,7 @@ console.log(userId);
   }, [])
 
   const markedRead = async (id) => {
-    mark(id,userId);
+    mark(id, userId);
     setLoading(false);
 
   }
@@ -56,23 +56,13 @@ console.log(userId);
       console.log("WebSocket connected:", frame);
 
       stompClient.subscribe(`/user/${userId}/queue/notifications`, (message) => {
-        
-        const notification = JSON.parse(message.body);
-       toast.success(`You have received a new message.`);
+        if (message) {
+          toast.success(`You have received a new message.`);
+          fetchAnnounce(userId);
+        }
 
-        setNotifications((prev) => [
-          {
-            id: notification.id,
-            title: notification.title,
-            content: notification.content,
-            sendAt: notification.sentAt,
-            read: notification.status === "UNREAD" ? false : true,
-            status: notification.status,
-          },
-          ...prev,
-        ]);
       });
-     
+
     }, (error) => {
       console.error("WebSocket connection error:", error);
     });
@@ -86,36 +76,36 @@ console.log(userId);
     };
   }, []);
 
-  
-  const fetchNotifications = async () => {
 
-    try {
-      const result = await getAllNotifications(userId);
-      if (result) {
-       
-        setNotifications(
-          result.map((n) => ({
-            id: n.id,
-            title: n.title,
-            content: n.content,
-            sendAt: n.sentAt || n.sendAt, 
-            read: n.status === "UNREAD" ? false : true,
-            status: n.status,
-          }))
-        );
-        setLoading(true);
-      }
-    } catch (error) {
-      console.error("Failed to fetch notifications:", error);
-    } 
-  };
+  // const fetchNotifications = async () => {
 
-  useEffect(() => {
-    if (!loading) {
-      fetchNotifications();
-    }
+  //   try {
+  //     const result = await getAllNotifications(userId);
+  //     if (result) {
 
-  }, [loading])
+  //       setNotifications(
+  //         result.map((n) => ({
+  //           id: n.id,
+  //           title: n.title,
+  //           content: n.content,
+  //           sendAt: n.sentAt || n.sendAt, 
+  //           read: n.status === "UNREAD" ? false : true,
+  //           status: n.status,
+  //         }))
+  //       );
+  //       setLoading(true);
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to fetch notifications:", error);
+  //   } 
+  // };
+
+  // useEffect(() => {
+  //   if (!loading) {
+  //     fetchNotifications();
+  //   }
+
+  // }, [loading])
 
 
   const markAllAsRead = async (id) => {
@@ -129,73 +119,73 @@ console.log(userId);
 
   return (
     <>
-    <ToastContainer position="top-right" />
-    <div className="notification-container">
-      <div className="avatar-container" onClick={handleAvatarClick}>
-        <i class="fa-solid fa-bell"></i>
-        {notiLength > 0 && <div className="badge">{notiLength}</div>}
-      </div>
-
-      <div className={`notification-card ${isOpen ? "open" : ""}`} ref={notificationRef}>
-        <div className="notification-header">
-          <h3>Notifications</h3>
-          <div className="header-actions">
-            {notiLength > 0 && (
-              <button className="mark-read-button" onClick={markAllAsRead}>
-                Mark all as read
-              </button>
-            )}
-            <button className="close-button" onClick={() => setIsOpen(false)}>
-              ✕
-            </button>
-          </div>
+      <ToastContainer position="top-right" />
+      <div className="notification-container">
+        <div className="avatar-container" onClick={handleAvatarClick}>
+          <i class="fa-solid fa-bell"></i>
+           <div className="badge">{notiLength}</div>
         </div>
 
-        {notifications.length > 0 ? (
-          <>
-            <div className="notification-list">
-              {notifications.map((notification) => (
-                <div key={notification.id} className={`notification-item ${notification.status === "READ" ? "READ" : "UNREAD"}`}>
-                  <div className="notification-content">
-                    <h4>{notification.title}</h4>
-                    <p>{notification.content}</p>
-                    <span className="notification-time">{notification.sendAt}</span>
-                  </div>
-                  <div className="notification-actions">
-                    {notification.status === "UNREAD" && (
-                      <button
-                        className="action-button"
-                        title="Mark as read"
-                        onClick={() => markedRead(notification.id)}
-                      >
-                        ✓
-                      </button>
-                    )}
-                    <button
-                      className="action-button delete"
-                      title="Delete"
-                      onClick={() => deleteNotification(notification.id)}
-                    >
-                      🗑️
-                    </button>
-                  </div>
-                </div>
-              ))}
+        <div className={`notification-card ${isOpen ? "open" : ""}`} ref={notificationRef}>
+          <div className="notification-header">
+            <h3>Notifications</h3>
+            <div className="header-actions">
+              {notiLength > 0 && (
+                <button className="mark-read-button" onClick={markAllAsRead}>
+                  Mark all as read
+                </button>
+              )}
+              <button className="close-button" onClick={() => setIsOpen(false)}>
+                ✕
+              </button>
             </div>
-            <div className="notification-footer">
-              <a href="#" className="view-all">
-                View all notifications
-              </a>
-            </div>
-          </>
-        ) : (
-          <div className="empty-state">
-            <div className="empty-icon">📭</div>
-            <p>No notifications</p>
           </div>
-        )}
+
+          {notifications.length > 0 ? (
+            <>
+              <div className="notification-list">
+                {notifications.map((notification) => (
+                  <div key={notification.id} className={`notification-item ${notification.status === "READ" ? "READ" : "UNREAD"}`}>
+                    <div className="notification-content">
+                      <h4>{notification.title}</h4>
+                      <p>{notification.content}</p>
+                      <span className="notification-time">{notification.sendAt}</span>
+                    </div>
+                    <div className="notification-actions">
+                      {notification.status === "UNREAD" && (
+                        <button
+                          className="action-button"
+                          title="Mark as read"
+                          onClick={() => markedRead(notification.id)}
+                        >
+                          ✓
+                        </button>
+                      )}
+                      <button
+                        className="action-button delete"
+                        title="Delete"
+                        onClick={() => deleteNotification(notification.id)}
+                      >
+                        🗑️
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="notification-footer">
+                <a href="#" className="view-all">
+                  View all notifications
+                </a>
+              </div>
+            </>
+          ) : (
+            <div className="empty-state">
+              <div className="empty-icon">📭</div>
+              <p>No notifications</p>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
     </>
   )
 }
