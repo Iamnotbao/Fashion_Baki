@@ -27,8 +27,6 @@ import {
 import { fetchUserDiscount } from '../../services/userServices';
 
 const ListDiscount = ({ handleClose }) => {
-    // State for managing the dialog
-    const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [discountCodes, setDiscountCodes] = useState([]);
     const [selectedCode, setSelectedCode] = useState(null);
@@ -45,7 +43,7 @@ const ListDiscount = ({ handleClose }) => {
         }
     }, [loading])
 
-   
+
 
     const fetchDiscount = async () => {
         const response = await fetchUserDiscount(id);
@@ -57,17 +55,13 @@ const ListDiscount = ({ handleClose }) => {
     }
 
 
-
-
     const handleSelectCode = (code) => {
         setSelectedCode(code);
-        setOpen(false);
-        setSnackbarMessage('Discount code selected!');
-        setSnackbarOpen(true);
-    };
+         setSnackbarMessage('Discount code has been selected!');
+    }
 
-
-    const handleCopyCode = () => {
+    const handleCopyCode = (code) => {
+        handleSelectCode(code);
         if (selectedCode) {
             navigator.clipboard.writeText(selectedCode.discountCode.code)
                 .then(() => {
@@ -127,7 +121,7 @@ const ListDiscount = ({ handleClose }) => {
                                         />
                                         <IconButton
                                             size="small"
-                                            onClick={handleCopyCode}
+                                            onClick={() => { handleCopyCode(code) }}
                                             sx={{
                                                 bgcolor: 'primary.main',
                                                 color: 'white',
@@ -140,7 +134,7 @@ const ListDiscount = ({ handleClose }) => {
                                 }
                                 secondary={
                                     <>
-                                      
+
                                         <Typography component="div" variant="caption" color="text.secondary">
                                             Expires: {formatDate(code.discountCode.expirationDate)}
                                             {code.minPurchase > 0 && ` • Min. purchase: $${code.minPurchase.toFixed(2)}`}
@@ -159,8 +153,6 @@ const ListDiscount = ({ handleClose }) => {
                 </Button>
             </DialogActions>
 
-
-            {/* Snackbar for notifications */}
             <Snackbar
                 open={snackbarOpen}
                 autoHideDuration={3000}

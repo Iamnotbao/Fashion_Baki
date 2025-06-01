@@ -77,35 +77,6 @@ export default function NotificationCard({ userId, notiLength, notifications }) 
   }, []);
 
 
-  // const fetchNotifications = async () => {
-
-  //   try {
-  //     const result = await getAllNotifications(userId);
-  //     if (result) {
-
-  //       setNotifications(
-  //         result.map((n) => ({
-  //           id: n.id,
-  //           title: n.title,
-  //           content: n.content,
-  //           sendAt: n.sentAt || n.sendAt, 
-  //           read: n.status === "UNREAD" ? false : true,
-  //           status: n.status,
-  //         }))
-  //       );
-  //       setLoading(true);
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to fetch notifications:", error);
-  //   } 
-  // };
-
-  // useEffect(() => {
-  //   if (!loading) {
-  //     fetchNotifications();
-  //   }
-
-  // }, [loading])
 
 
   const markAllAsRead = async (id) => {

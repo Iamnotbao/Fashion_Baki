@@ -118,7 +118,6 @@ const Header = () => {
                         "Content-Type": "application/json"
                     }
                 })
-
                 switch (type) {
                     case "categories":
                         setCategory(response.data);
@@ -133,8 +132,6 @@ const Header = () => {
                     default:
                         break;
                 }
-
-
             } catch (error) {
                 console.log(error);
 
