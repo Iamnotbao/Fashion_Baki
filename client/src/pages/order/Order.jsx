@@ -18,7 +18,6 @@ import CartTable from "../../components/Order/CartTable"
 import PaymentMethods from "../../components/Payment/PaymentMethods"
 import { fetchUser } from "../../services/userServices"
 import { payOrder } from "../../services/paymentServices"
-import { createShipping } from "../../services/shippingServices"
 import CompactDiscount from "../../components/Discount/CompactDiscount"
 import { Paper, Typography } from "@mui/material"
 
@@ -83,22 +82,20 @@ const Order = () => {
     setHasDiscount(discountInfo.savings > 0)
   }
 
-  useEffect(() => {
-    if (completedOrder != null && paymentMethod === "momo") {
-      const payByMomo = async () => {
-        const response = await payOrder(completedOrder)
-        window.location.href = response.payUrl
-        const result = await createShipping(completedOrder)
-        console.log("go", result)
-      }
-      payByMomo()
-    }
-  }, completedOrder)
+  // useEffect(() => {
+  //   if (completedOrder != null && paymentMethod === "momo") {
+  //     const payByMomo = async () => {
+  //       const response = await payOrder(completedOrder)
+  //       window.location.href = response.payUrl
+  //     }
+  //     payByMomo()
+  //   }
+  // }, completedOrder)
 
   useEffect(() => {
     const fetchData = async () => {
       const user = await fetchUser()
-      setOrder({ receiverName: user.username, receiverAddress: user.address, receiverPhone: user.phone })
+      setOrder({ receiverName: user.username, receiverAddress: user.address, receiverPhone: user.phone, discountCode: "" })
     }
     fetchData()
   }, [])
@@ -123,23 +120,28 @@ const Order = () => {
     removeCart(id)
     setLoading(false)
   }
-
-  const handleOrder = async () => {
-    try {
-  
-      const orderWithTotal = {
-        ...order,
-        totalAmount: finalTotal,
-      }
-
-      localStorage.setItem("orderId", order.id)
-      const response = await chekOutOrder(orderWithTotal)
-      console.log("check orders", response)
+  const payByMomo = async (ord) => {
+    const response = await payOrder(ord);
       if (response) {
         toast.success("PAY SUCCESSFULLY!!!")
-        setCompletedOrder(response.orderId)
+        // setCompletedOrder(orderWithTotal)
+        window.location.href = response.payUrl
         setLoading(false)
       }
+      
+  }
+  const handleOrder = async () => {
+    try {
+
+      // const orderWithTotal = {
+      //   ...order,
+      //   totalAmount: finalTotal,
+      // }
+
+      // localStorage.setItem("orderId", order.id)
+      // const response = await chekOutOrder(orderWithTotal)
+      // console.log("check orders", response)
+       await payByMomo(order);
     } catch (error) {
       console.log(error)
     }

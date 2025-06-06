@@ -1,8 +1,8 @@
 import axios from "axios";
 const baseURL = import.meta.env.VITE_API_URL;
 
-export const payOrder =async(orderId )=>{
-    const response = await axios.post(`${baseURL}/payments/momo/${orderId}`, {
+export const payOrder =async(order)=>{
+    const response = await axios.post(`${baseURL}/payments/momo`, order,{
         headers: {
             'Content-Type': 'application/json',
             'Accepts': 'application/json',

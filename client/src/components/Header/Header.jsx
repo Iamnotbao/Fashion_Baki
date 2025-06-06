@@ -36,36 +36,7 @@ const Header = () => {
     const orderId = queryParams.get("orderId");
     const resultCode = queryParams.get("resultCode");
 
-    useEffect(() => {
-        const processShipping = async () => {
-            if (orderId) {
-                try {
-                    
-                    const match = orderId.match(/^(\d+)MOMO/);
-                    checkStatusMomo(match[1]);
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-        };
-        processShipping();
-    }, [orderId]);
-    const checkStatusMomo = async (id) => {
-       
-        const response = await checkStatus(id);
-        
-        if (response && resultCode === "0") {
-            
-            checkShippingStatus(id);
-        } else {
-            console.log("not yet payment");
-        }
-    }
-    const checkShippingStatus = async (id) => {
-        
-        const response = await createShipping(id);
-       
-    }
+ 
     const handleBuy = (id) => {
         navigation("/product/" + id);
     };
