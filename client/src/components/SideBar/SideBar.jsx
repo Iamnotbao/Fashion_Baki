@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./SideBar.css";
 
 const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, categoryName, catID,handleToList}) => {
-  console.log("baby", catID);
+ 
   
   return (
     <>
@@ -17,7 +17,7 @@ const SideBar = ({ cat, brand, handleCategoryClick, fetchBrand, selectedSubCat, 
                 fontWeight: 800,
                 textTransform: "uppercase",
               }}
-              to=""
+              to={`/product/all/${categoryName}?page=0&size=8`}
             >
               {categoryName}
               <span>

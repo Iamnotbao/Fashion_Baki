@@ -12,7 +12,7 @@ const UserProfile = () => {
     const [newProfile, setNewProfile] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const baseURL = import.meta.env.VITE_API_URL ;
-    console.log("hello user");
+   
     
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const UserProfile = () => {
                     },
                     withCredentials: true
                 });
-                console.log("user", response.data);
+              
                 if (response.data) {
                     localStorage.removeItem("user");
                     localStorage.setItem("user", JSON.stringify(response.data));
@@ -59,7 +59,7 @@ const UserProfile = () => {
                         }, withCredentials: true
                     }
                 );
-                console.log(response.data);
+           
                 if (response.data) {
                     setIsLoading(true);
                     toast.success("Avatar is modified successfully!");
@@ -93,7 +93,6 @@ const UserProfile = () => {
                 },
                 withCredentials: true
             });
-            console.log("user", response.data);
             if (response.data) {
                 setUserProfile(response.data);
                 handleClosePopup();

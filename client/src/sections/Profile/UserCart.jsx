@@ -7,7 +7,7 @@ import { getAllOrderByUser } from "../../services/orderServices";
 const UserCart = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
-    console.log("test get all order by user", orders);
+   
 
     useEffect(() => {
         const fetchOrders = async () => {

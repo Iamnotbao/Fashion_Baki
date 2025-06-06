@@ -9,7 +9,6 @@ export const fetchCart = async () => {
         },
         {},
     );
-    console.log("check response fetch cart", response);
 
     return response.data;
 }
@@ -58,6 +57,5 @@ export const removeCart = async (item) => {
             'Content-Type': 'application/json'
         }, withCredentials: true
     },);
-    console.log("check reponse remove", response);
     return response.data;
 }

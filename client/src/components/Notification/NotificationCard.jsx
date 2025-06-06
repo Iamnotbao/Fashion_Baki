@@ -21,7 +21,7 @@ export default function NotificationCard({ userId, notiLength, notifications }) 
   const mark = markNotification();
    const fetchAnnounce = fetchNotification();
 
-  console.log(userId);
+ 
 
 
   const handleAvatarClick = () => {

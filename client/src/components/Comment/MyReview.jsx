@@ -37,7 +37,7 @@ const MyReview = ({ handleUpdateReview }) => {
             try {
                 const response = await createReview(review);
                 if(response){
-                    console.log(response);
+                   
                     setReviewText("");
                     setRating(0);
                     handleUpdateReview();

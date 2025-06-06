@@ -31,7 +31,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+   
     let response;
     try {
       response = await axios.post(`${baseURL}/auth/register`, user, {
@@ -39,7 +39,6 @@ const SignUp = () => {
           'Content-Type': 'application/json'
         }
       })
-      console.log("x",response.data);
       
       if (response.data) {
         localStorage.setItem("email",user.email);

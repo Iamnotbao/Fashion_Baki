@@ -11,7 +11,7 @@ export default function ReviewSection({reviews=[],totalReviews,averageRating}) {
   const [showOnlyImages, setShowOnlyImages] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
 
-  console.log("all good",totalReviews,averageRating);
+ 
   
 
 

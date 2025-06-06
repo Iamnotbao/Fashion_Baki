@@ -42,7 +42,7 @@ const ProductDetail = () => {
   const fetchCart = useFetchCart()
   const { items } = useSelector((state) => state.cart)
   // const { selectedProduct, setSelectedProduct } = useState({});
-  console.log("color", baseURL)
+ 
 
   const handleDescription = () => {
     setOnDescription(!onDesciption)

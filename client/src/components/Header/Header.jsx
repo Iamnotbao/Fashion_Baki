@@ -35,13 +35,12 @@ const Header = () => {
     const queryParams = new URLSearchParams(location.search);
     const orderId = queryParams.get("orderId");
     const resultCode = queryParams.get("resultCode");
-    console.log("finish fetching:", notifications);
 
     useEffect(() => {
         const processShipping = async () => {
             if (orderId) {
                 try {
-                    console.log("bebeb", orderId);
+                    
                     const match = orderId.match(/^(\d+)MOMO/);
                     checkStatusMomo(match[1]);
                 } catch (error) {
@@ -52,20 +51,20 @@ const Header = () => {
         processShipping();
     }, [orderId]);
     const checkStatusMomo = async (id) => {
-        console.log("id", id);
+       
         const response = await checkStatus(id);
-        console.log(response);
+        
         if (response && resultCode === "0") {
-            console.log("after check", response);
+            
             checkShippingStatus(id);
         } else {
             console.log("not yet payment");
         }
     }
     const checkShippingStatus = async (id) => {
-        console.log("id", id);
+        
         const response = await createShipping(id);
-        console.log("after shipping", response);
+       
     }
     const handleBuy = (id) => {
         navigation("/product/" + id);
@@ -91,7 +90,7 @@ const Header = () => {
     
     useEffect(() => {
         if (loading && notifications && notifications.length > 0) {
-            console.log("run notifajijadiad: ", notifications);
+            
             
                  const unreadNotification =  notifications.filter((notification) => notification.status==="UNREAD").length
                  setNotiLength(unreadNotification);

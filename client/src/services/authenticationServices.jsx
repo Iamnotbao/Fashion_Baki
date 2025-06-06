@@ -8,7 +8,6 @@ export const verifyUser = async (token) => {
                 "Content-Type": "application/json"
             },withCredentials: true
         });
-        console.log(response.data);
         if (response.data) {
             return response.data
         }
@@ -56,7 +55,6 @@ export const resetPassword = async (email, password) => {
                 "Content-Type": "application/json"
             },withCredentials: true
         })
-        console.log(response);
         
         if (response.data) { 
             return response.data; 
@@ -72,6 +70,7 @@ export const googleAuthentication= async(idToken)=>{
             headers: {
                 Authorization: `Bearer ${idToken}`,
               },
+              withCredentials: true
         })
         if(response.status===200){
             return response.data;

@@ -37,7 +37,7 @@ function PasswordReset() {
     try {
       const response  = await forgotPassword(email);
       if(response){
-        console.log(response);
+        
         localStorage.setItem("email",email);
         setIsSubmitting(true);
         setError("");

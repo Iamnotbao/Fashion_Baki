@@ -97,7 +97,7 @@ const DiscountSection = () => {
   }, [loading])
 
   const handleCopyCode = (code) => {
-    console.log("ok");
+   
 
     setSelectedCode(code);
     if (selectedCode) {
@@ -193,7 +193,7 @@ const DiscountSection = () => {
                     </Box>
                   </CardContent>
                   <ButtonGroup>
-                    <ButtonTheme><StyledLink>Use Now</StyledLink><ArrowRightAltIcon/></ButtonTheme>
+                    <ButtonTheme><StyledLink to={"/"}>Use Now</StyledLink><ArrowRightAltIcon/></ButtonTheme>
                   </ButtonGroup>
                 </CouponCard>
               </Grid>

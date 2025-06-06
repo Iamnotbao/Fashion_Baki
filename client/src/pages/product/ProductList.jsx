@@ -23,7 +23,6 @@ const ProductList = () => {
   const { categoryName } = useParams();
   const [type, setType] = useState("category");
 
-console.log("selected :",selectedSubCat);
 
   const handleBuy = (id) => {
     navigation("/product/" + id);
@@ -85,7 +84,7 @@ console.log("selected :",selectedSubCat);
           "Content-Type": "application/json",
         },
       });
-      console.log("bem",response);
+     
       setSelectedSubCat({});
       setProducts(response.data.content);
       setTotalPage(response.data.totalPages);
@@ -98,12 +97,13 @@ console.log("selected :",selectedSubCat);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${url}/service/products/category/${id}?size=8`, {
+      const response = await axios.get(`${url}/service/products/category/${id}?page=0&size=8`, {
         headers: {
           "Content-Type": "application/json",
         },
       });
       setTotalPage(response.data.totalPages);
+      setType("category");
       setProducts(response.data.content);
     } catch (error) {
       console.log(error);

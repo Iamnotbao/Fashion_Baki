@@ -46,7 +46,7 @@ const SignIn = () => {
             },
             withCredentials: true
         });
-        console.log("Check session response:", c.data);
+        
     } catch (error) {
         console.error("Check session error:", error.response ? error.response.data : error.message);
     }
@@ -71,7 +71,7 @@ const SignIn = () => {
           'Accepts': 'application/json',
         },withCredentials: true
       })
-      console.log("check response", response);
+      
       if (response.data) {
         await login(response.data.username);
         check();

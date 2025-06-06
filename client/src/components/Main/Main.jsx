@@ -23,7 +23,7 @@ const Main =()=>{
                 withCredentials: true
               
             })
-            console.log("check session",c); 
+           
             
         }
         check();

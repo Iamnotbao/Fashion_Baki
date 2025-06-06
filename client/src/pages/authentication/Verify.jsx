@@ -10,8 +10,8 @@ const Verify = () => {
     const email = localStorage.getItem("email");
     const location = useLocation();
     const { functionName } = location.state || {};
-    console.log("check method in verify",functionName);
-    console.log(key);
+   
+    
     
     
 

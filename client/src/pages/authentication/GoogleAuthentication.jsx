@@ -7,7 +7,7 @@ const GoogleAuthentication = ({ setToken }) => {
     return (
         <GoogleLogin
             onSuccess={credentialResponse => {
-                console.log(credentialResponse);
+                
                 setToken(credentialResponse.credential);
             }}
             onError={() => {

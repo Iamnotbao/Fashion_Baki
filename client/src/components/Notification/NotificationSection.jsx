@@ -32,7 +32,7 @@ export default function NotificationSection() {
     const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
     const userId = localStorage.getItem("id");
      const mark = markNotification();
-    console.log("boom", notifications);
+    
 
 
     const handleNotificationSelect =async (e,notification) => {
@@ -42,7 +42,7 @@ export default function NotificationSection() {
 
     const handleMarkAsRead = async(id, event) => {
         event.stopPropagation()
-        console.log("change", id);
+        
         
         await mark(id,userId);
         setLoading(false);

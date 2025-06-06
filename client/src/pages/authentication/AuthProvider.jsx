@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import useFetchCart from "../../components/Cart/fetchCart";
-import { fetchUser } from "../../services/userServices";
+import { checkSession, fetchUser } from "../../services/userServices";
 
 
 export const AuthContext = createContext();
@@ -10,9 +10,21 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); 
   const fetchCart = useFetchCart();
   
+
+  const checkSessionData = async () => {
+    try {
+        const response  = await checkSession();
+      
+    } catch (error) {
+      console.error("Check session error:", error);
+    }
+  };
+
+
   useEffect(() => {
     const username = localStorage.getItem("username");
     if (username) {
+      checkSessionData();
       setIsAuthenticated(true);
     }
     setLoading(false);
@@ -21,8 +33,10 @@ export const AuthProvider = ({ children }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+
   const login = async(username) => {
-    console.log("Logged in as:", username);
+    
     localStorage.setItem("username", username); 
     localStorage.setItem("user",JSON.stringify(await fetchUser()));
 

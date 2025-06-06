@@ -19,7 +19,20 @@ export const fetchUser = async () => {
     }
 }
 
-
+  export const checkSession = async () => {
+    try {
+        const c = await axios.get(`${base}/auth/check-session`, {
+            headers: {
+                "Content-Type": "application/json",
+                'Accepts': 'application/json',
+            },
+            withCredentials: true
+        });
+       return c.data;
+    } catch (error) {
+        console.error("Check session error:", error.response ? error.response.data : error.message);
+    }
+};
 export const fetchUserDiscount = async (id) => {
     try {
         const response = await axios.get(`${baseURL}/user-discounts/${id}`, {

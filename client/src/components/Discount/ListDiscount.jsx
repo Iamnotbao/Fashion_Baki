@@ -47,7 +47,7 @@ const ListDiscount = ({ handleClose }) => {
 
     const fetchDiscount = async () => {
         const response = await fetchUserDiscount(id);
-        console.log("check discounts", response);
+       
         if (response) {
             setDiscountCodes(response)
             setLoading(true)

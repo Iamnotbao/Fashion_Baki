@@ -12,7 +12,6 @@ const CarouselProduct = ({ products = [] }) => {
   };
   
   const handleBuy = useCallback((id) => {
-    console.log('click', id);
     navigation('/product/' + id);
   }, [navigation]);
   

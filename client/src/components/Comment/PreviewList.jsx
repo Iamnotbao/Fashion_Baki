@@ -9,7 +9,7 @@ import { Star } from "lucide-react"
 
 const PreviewList = ({ reviews = [], totalReviews,averageRating  }) => {
   const [onReviews, setOnReviews] = useState(false);
-  console.log("pass", totalReviews, averageRating );
+  
   const renderStars = (rating) => {
     return (
       <div className="stars-container">

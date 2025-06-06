@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export async function getProductBySubByPage(id, page, size) {
         try {
                 const response = await axios.get(`${BASE_URL}/service/products/subcategory/${id}?page=${page}&size=${size}`);
-                console.log("kk",response);
+                
                 
                 if (response.data) {
                         return response.data;

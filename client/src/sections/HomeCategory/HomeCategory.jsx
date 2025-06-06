@@ -19,8 +19,8 @@ const HomeCategory = ({ eachBanner }) => {
     const navigation = useNavigate();
     const addToCart = AddToCart();
     const [selectedProduct, setSelectedProduct] = useState({});
-    console.log("auto select", selectedProduct);
-    console.log(eachBanner);
+    
+    
     const url = import.meta.env.VITE_API_URL;
 
 
@@ -51,7 +51,7 @@ const HomeCategory = ({ eachBanner }) => {
                     });
                     catProducts[cat.id] = res.data.content;
                 }
-                console.log("look", catProducts);
+                
                 setProductsByCat(catProducts);
             } catch (error) {
                 console.error("Error fetching products by cat:", error);
