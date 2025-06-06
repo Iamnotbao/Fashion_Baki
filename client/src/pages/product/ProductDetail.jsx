@@ -43,7 +43,8 @@ const ProductDetail = () => {
   const { items } = useSelector((state) => state.cart)
   // const { selectedProduct, setSelectedProduct } = useState({});
  
-
+  console.log("Product Info:", size, color);
+  
   const handleDescription = () => {
     setOnDescription(!onDesciption)
   }
@@ -70,7 +71,7 @@ const ProductDetail = () => {
   }
 
   const handleAddCart = (id, count) => {
-    addToCart(id, count, color, size)
+    addToCart(id, count, size, color)
   }
 
   useEffect(() => {
