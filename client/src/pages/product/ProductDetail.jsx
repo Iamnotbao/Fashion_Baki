@@ -25,10 +25,8 @@ const ProductDetail = () => {
   const { id } = useParams()
   const [count, setCount] = useState(1)
   const [sizePop, setSizePop] = useState(false)
-  const swiperRef = useRef(null)
-  const [products, setProducts] = useState([])
+  const [stock, setStock] = useState([])
   const baseURL = import.meta.env.VITE_API_URL
-  // const url = "/api/service/categories"
   const [productInfo, setProductInfo] = useState([])
   const [category, setCategory] = useState([])
   const [quantity, setQuantity] = useState({})
@@ -38,24 +36,19 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(false)
   const [color, setColor] = useState([])
   const [size, setSize] = useState([])
+
   const addToCart = AddToCart()
   const fetchCart = useFetchCart()
   const { items } = useSelector((state) => state.cart)
-  // const { selectedProduct, setSelectedProduct } = useState({});
  
-  console.log("Product Info:", size, color);
+ 
+  console.log("Product Info:", stock);
   
   const handleDescription = () => {
     setOnDescription(!onDesciption)
   }
   const handleChangeColorOrSize = (value, setValue) => {
     setValue(value)
-    // setSelectedProduct({
-    //         [productInfo.id]: {
-    //             ...(selectedProduct[productInfo.id] || {}),
-    //             [name]: value,
-    //         },
-    //     });
   }
 
   const handleToggleCollapse = () => {
@@ -70,8 +63,8 @@ const ProductDetail = () => {
     setSizePop(false)
   }
 
-  const handleAddCart = (id, count) => {
-    addToCart(id, count, size, color)
+  const handleAddCart = (product) => {
+    addToCart(product.id, count, size, color)
   }
 
   useEffect(() => {
@@ -104,8 +97,26 @@ const ProductDetail = () => {
     fetch()
   }, [])
 
+  useEffect(() => {
+  if (size && color && productInfo.stocks) {
+      console.log("bs size:", size);
+      const stock = productInfo.stocks.find((stock) => stock.size === size && stock.color === color);
+      if (stock) {
+        setStock(stock);
+        setQuantity(stock.quantity);
+      } else {
+        setQuantity(0);
+      }
+
+  }
+}, [size, color, productInfo.stocks]);
+
   function handleAdd() {
-    setCount((prev) => prev + 1)
+    if(count < quantity) {
+      setCount((prev) => prev + 1)
+    } else {
+      console.log("You cannot increase with larger than stock !!!")
+    }
   }
 
   function handleDecrease() {
@@ -125,7 +136,6 @@ const ProductDetail = () => {
             "Content-Type": "application/json",
           },
         })
-        setProducts(response.data)
       } catch (error) {
         console.log(error)
       }
@@ -373,10 +383,12 @@ const ProductDetail = () => {
                       </div>
                     </div>
                     <div className="swiper-slider">
-                      <button onClick={() => handleAddCart(productInfo.id, count)} className="Add">
-                        <span className="text">Add To Card</span>
-                      </button>
-                      
+                    <Stock
+                      product={productInfo}
+                      selectedProduct={stock}
+                      handleCart={handleAddCart}
+                      page="productDetail"
+                    />
                     </div>
                     <div className="product-single__policy">
                       <div className="product-policy">

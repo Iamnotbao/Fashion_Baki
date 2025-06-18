@@ -135,7 +135,7 @@
     font-family: "Pangea", sans-serif;
 }
 
-.Add {
+.Add,.offCart {
     width: 100%;
     padding: 12px 24px;
     background-color: rgb(13, 13, 13);
