@@ -260,7 +260,7 @@ const Header = () => {
 
                     </div>
                     <div className="header-actions__notification" >
-                        <NotificationCard userId={id} notiLength={notiLength} notifications={notifications} />
+                        <NotificationCard userId={id} notiLength={notiLength} notifications={notifications} setLoading={setLoading} />
                     </div>
 
                 </div>

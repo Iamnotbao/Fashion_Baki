@@ -1,20 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { getAllNotifications, markAsRead } from "../services/notificationServices";
-const initialState ={
-    notifications:[],
-    status:"idle",
-    error:null
+import { deleteNotification, getAllNotifications, markAsRead } from "../services/notificationServices";
+const initialState = {
+    notifications: [],
+    status: "idle",
+    error: null
 }
 
-export const fetchNotificationThunk= createAsyncThunk('notification/fetchNotification',async(noti)=>{
+export const fetchNotificationThunk = createAsyncThunk('notification/fetchNotification', async (noti) => {
     const notification = await getAllNotifications(noti.id);
     return notification;
 })
 
-export const markNotificationThunk= createAsyncThunk('notification/markedNotification',async(noti)=>{
+export const markNotificationThunk = createAsyncThunk('notification/markedNotification', async (noti) => {
     const notification = await markAsRead(noti.notiId);
     return notification;
+})
+export const deleteNotificationThunk = createAsyncThunk('notification/deleteNotification', async (noti) => {
+    await deleteNotification(noti.notiId);
+    return noti.notiId;
 })
 
 const notificationSlice = createSlice({
@@ -29,23 +33,16 @@ const notificationSlice = createSlice({
                 state.status = 'succeeded';
                 state.notifications = action.payload;
             })
-            .addCase(fetchNotificationThunk.rejected, (state, action) => {
+            .addCase(fetchNotificationThunk.rejected, (state) => {
                 state.status = 'failed';
                 state.notifications = [];
             })
             .addCase(markNotificationThunk.fulfilled, (state) => {
                 state.status = 'succeeded';
             })
-            // .addCase(removeCartItemThunk.fulfilled, (state, action) => {
-            //     state.items = action.payload;
-            // })
-            // .addCase(updateCartItemThunk.fulfilled, (state, action) => {
-            //     state.items = action.payload;
-            // })
-            // .addCase(clearCartItemThunk.fulfilled, (state, action) => {
-            //     state.items = action.payload;
-            // })
-
+            .addCase(deleteNotificationThunk.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+            })
     }
 
 })

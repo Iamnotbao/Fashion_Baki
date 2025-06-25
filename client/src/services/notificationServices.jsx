@@ -40,3 +40,17 @@ export const markAsRead = async (notificationId) => {
         throw error;
     }
 }
+
+export const deleteNotification = async (id) => {
+    try {
+        const response = await axios.delete(`${API_URL}/${id}`,{
+            headers: {
+                "Content-Type": "application/json",
+            },withCredentials: true
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching notifications:", error);
+        throw error;
+    }
+}

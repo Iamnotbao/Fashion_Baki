@@ -63,10 +63,7 @@ const HomeCategory = ({ eachBanner }) => {
     const handleBuy = (id) => {
         navigation("/product/" + id);
     }
-    // const handleID = (id) => {
-    //     setID(id);
 
-    // }
     const handleCart = (product) => {
         const selections = selectedProduct[product.id];
         const size = selections?.size || product.sizes[0];

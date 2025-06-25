@@ -7,10 +7,10 @@ import { Client, Stomp } from "@stomp/stompjs"
 import { ToastContainer, toast } from "react-toastify";
 import markNotification from "./MarkNotification";
 import fetchNotification from "./FetchNotification";
+import deleteNotification from "./DeleteNotification";
 
-export default function NotificationCard({ userId, notiLength, notifications }) {
+export default function NotificationCard({ userId, notiLength, notifications, setLoading  }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [loading, setLoading] = useState(false);
   const notificationRef = useRef(null)
   const apiUrl = import.meta.env.VITE_API_URL;
   const websocketPath = import.meta.env.VITE_WEBSOCKET_PATH
@@ -19,9 +19,10 @@ export default function NotificationCard({ userId, notiLength, notifications }) 
   const websocketUrl = url.toString();
   const stompClientRef = useRef(null);
   const mark = markNotification();
-   const fetchAnnounce = fetchNotification();
+  const deleteNotify = deleteNotification();
+  const fetchAnnounce = fetchNotification();
 
- 
+
 
 
   const handleAvatarClick = () => {
@@ -43,9 +44,10 @@ export default function NotificationCard({ userId, notiLength, notifications }) 
 
   const markedRead = async (id) => {
     mark(id, userId);
-    setLoading(false);
-
   }
+
+
+
   useEffect(() => {
     const socket = new SockJS(websocketUrl);
     const stompClient = Stomp.over(socket);
@@ -83,9 +85,9 @@ export default function NotificationCard({ userId, notiLength, notifications }) 
     console.log("ok");
   }
 
-  const deleteNotification = (id) => {
-    console.log("deleteNotification", id);
-
+  const deleteNoti = async(id) => {
+    deleteNotify(id);
+    setLoading(false);
   }
 
   return (
@@ -94,7 +96,7 @@ export default function NotificationCard({ userId, notiLength, notifications }) 
       <div className="notification-container">
         <div className="avatar-container" onClick={handleAvatarClick}>
           <i class="fa-solid fa-bell"></i>
-           <div className="badge">{notiLength}</div>
+          <div className="badge">{notiLength}</div>
         </div>
 
         <div className={`notification-card ${isOpen ? "open" : ""}`} ref={notificationRef}>
@@ -135,7 +137,7 @@ export default function NotificationCard({ userId, notiLength, notifications }) 
                       <button
                         className="action-button delete"
                         title="Delete"
-                        onClick={() => deleteNotification(notification.id)}
+                        onClick={() => deleteNoti(notification.id)}
                       >
                         🗑️
                       </button>
