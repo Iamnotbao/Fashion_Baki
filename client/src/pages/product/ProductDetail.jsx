@@ -8,7 +8,11 @@ import { useParams } from "react-router-dom"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Scrollbar } from "swiper/modules"
 import { useSelector } from "react-redux"
-import UpdateCart from "../../components/Cart/updateCart"
+import Ship from "../../assets/images/product/shipping.png"
+import Return from "../../assets/images/product/return-box.png"
+import ReturnFor60Days from "../../assets/images/product/return-60-days.png"
+import Hotline from "../../assets/images/product/hotline.png"
+import Receive from "../../assets/images/product/receive.png"
 import useFetchCart from "../../components/Cart/fetchCart"
 import AddToCart from "../../components/Cart/addToCart"
 import Comment from "../../components/Comment/Comment"
@@ -19,6 +23,7 @@ import "./ProductDetail.css"
 import Description from "../../components/Description/Description"
 import Recommendation from "../../components/Recommendation/Recommendation"
 import Stock from "../../components/Button/Stock"
+
 
 
 const ProductDetail = () => {
@@ -238,11 +243,11 @@ const ProductDetail = () => {
                     </div>
                     <div className="swiper-slide">
                       <img
-                        src="https://www.coolmate.me/images/icons/icon4.svg"
+                        src={Ship}
                         alt="Miễn phí vận chuyển"
-                        style={{ width: "18px", height: "18px;" }}
+                        style={{ width: "60px", height: "60px;" }}
                       />{" "}
-                      <span>Freeship</span>
+                      <span style={{fontWeight:"bold"}}>Freeship</span>
                     </div>
                     <div className="swiper-slide">
                       <div className="event-notification border border-primary border-3 p-3">
@@ -395,47 +400,56 @@ const ProductDetail = () => {
                         <div className="product-policy__item">
                           <div className="product-policy__icon">
                             <img
-                              src="https://www.coolmate.me/images/product-detail/return.svg"
-                              alt="Đổi trả với số điện thoại"
+                              src={Return}
+                              alt="pay back by phone"
+                              style={{ width: "42px", height: "42px;" }}
                             />
-                          </div>
-                          <span className="product-policy__title">
-                            Đổi trả cực dễ chỉ cần số
-                            <br /> điện thoại
+                              <span className="product-policy__title">
+                            It is easy to pay back by
+                            <br /> phone number
                           </span>
+                          </div>
+                        
                         </div>
                         <div className="product-policy__item">
                           <div className="product-policy__icon">
                             <img
-                              src="https://www.coolmate.me/images/product-detail/return-60.svg"
-                              alt="Đổi hàng trong 60 ngày"
+                              src={ReturnFor60Days}
+                              alt="pay back in 60 days"
+                              style={{ width: "42px", height: "42px;" }}
                             />
+                              <span className="product-policy__title">pay back with any</span>
+                              <br /> reason within 60 days
                           </div>
-                          <span className="product-policy__title">60 ngày đổi trả vì bất kỳ lý do gì</span>
+                        
                         </div>
                         <div className="product-policy__item">
                           <div className="product-policy__icon">
                             <img
-                              src="https://www.coolmate.me/images/product-detail/phone.svg"
-                              alt="Hotline 1900.27.27.37"
+                              src={Hotline}
+                              alt="Hotline 1900.30.10.02"
+                              style={{ width: "42px", height: "42px;" }}
                             />
-                          </div>
-                          <span className="product-policy__title">
-                            Hotline 1900.27.27.37 hỗ
-                            <br /> trợ từ 8h30 - 22h mỗi ngày
+                            <span className="product-policy__title">
+                            Hotline 1900.30.10.02 support
+                            <br /> from 8h30 - 22h each day
                           </span>
+                          </div>
+                          
                         </div>
                         <div className="product-policy__item">
                           <div className="product-policy__icon">
                             <img
-                              src="https://www.coolmate.me/images/product-detail/location.svg"
-                              alt="Trả hàng tận nơi"
+                              src={Receive}
+                              alt="directly receive product return"
+                              style={{ width: "42px", height: "42px;" }}
                             />
-                          </div>
-                          <span className="product-policy__title">
-                            Đến tận nơi nhận hàng trả,
-                            <br /> hoàn tiền trong 24h
+                            <span className="product-policy__title">
+                           return product directly at,
+                            <br /> receive cash within 24 hours
                           </span>
+                          </div>
+                          
                         </div>
                       </div>
                     </div>
